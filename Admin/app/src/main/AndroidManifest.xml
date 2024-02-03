@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- for google map -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- for location -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,12 +20,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Admin"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAYf7SAuH7r-6JjeqC7GhG3M5S0EJdEiyY" />
+
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.WelcomeActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
