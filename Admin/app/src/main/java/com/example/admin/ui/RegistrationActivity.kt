@@ -4,18 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.admin.R
+import com.example.admin.databinding.ActivityRegistrationBinding
 
-class MainActivity : AppCompatActivity() {
+class RegistrationActivity : AppCompatActivity() {
+    private lateinit var mBinding: ActivityRegistrationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        mBinding = ActivityRegistrationBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
     }
 
     companion object {
         fun instance(context: Context): Intent {
-            val intent = Intent(context, MainActivity::class.java)
+            val intent = Intent(context, RegistrationActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             return intent
         }

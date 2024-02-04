@@ -1,23 +1,32 @@
 package com.example.admin.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.example.admin.R
+import com.example.admin.databinding.ActivitySplashBinding
 
-class WelcomeActivity : AppCompatActivity() {
+@SuppressLint("CustomSplashScreen")
+class SplashActivity : AppCompatActivity() {
     private lateinit var mThread: SeparatedThread
+    private lateinit var mBinding: ActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        mBinding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
 
+        goToMainActivity()
+    }
+
+    private fun goToMainActivity() {
         mThread = SeparatedThread()
         mThread.start()
         Handler(mThread.looper).postDelayed({
-            val intent = MainActivity.instance(baseContext)
+            val intent = RegistrationActivity.instance(baseContext)
             startActivity(intent)
+            finish()
         }, 2000)
-
     }
 
     override fun onDestroy() {
