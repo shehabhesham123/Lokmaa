@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/primaryTextColor"
+
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/SignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/PrimaryBackgroundCloro"
+        android:orientation="vertical"
+        android:padding="@dimen/_15sdp"
+        tools:context=".ui.MainActivity">
+
+        <ImageView
+            android:id="@+id/SignUpFragment_ImageView_ArrowBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/SignUp_tv_SignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SignUp_tv"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="@dimen/_22ssp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/SignUp_tv_Create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/SignUp_tv_text"
+            android:textAlignment="textStart"
+            android:textColor="@color/ThirdTextColor"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/SignUp_tv_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:textColor="@color/grey"
+            android:text="@string/SignUp_tv_RestaurantName"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/SignUp_Et_Name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            app:boxBackgroundColor="#fafafa"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxStrokeWidth="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/SignUp_InputET_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:paddingStart="@dimen/_15sdp"
+                android:textColor="@color/secondaryTextColor"
+                tools:ignore="RtlSymmetry" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:textColor="@color/grey"
+            android:text="@string/SignUp_tv_RestaurantLogo"
+            android:textSize="@dimen/_12ssp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginTop="@dimen/_9sdp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/SignUp_CardView_UploadLogo"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="@dimen/_15sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#00FFFFFF"
+                app:cardMaxElevation="0dp"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/SignUp_ImageView_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:scaleType="centerCrop"
+                    android:backgroundTint="#fafafa" />
+
+                <TextView
+                    android:id="@+id/SignUp_uploadLogoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#fafafa"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:text="@string/SignUp_UploadLogo"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/_15ssp"
+                    app:drawableStartCompat="@android:drawable/ic_menu_upload" />
+
+
+            </androidx.cardview.widget.CardView>
+
+           </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/SignUp_Button_Next"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:text="@string/SignUp_bt_Next"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_13ssp"
+                app:backgroundTint="@color/primaryColor"
+                app:cornerRadius="@dimen/_8sdp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/SignUpFragment_AnimationView"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/progressbar" />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/SignUp_Lo_tv_Have"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_12ssp" />
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

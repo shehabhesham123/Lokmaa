@@ -1,11 +1,9 @@
-package com.example.admin.ui
+package com.example.admin
 
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.admin.R
-import com.example.admin.pojo.Address
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -49,10 +47,8 @@ class GoogleMap : SupportMapFragment() {
      * this fun is used to add mark to address on map
      */
     fun addMarker(markerParam: Marker) {
-        val address = markerParam.address
-        val latLng = LatLng(address.latitude, address.longitude)
         val marker = MarkerOptions()
-            .position(latLng)
+            .position(markerParam.latLng)
             .title(markerParam.title)
         if (marker.icon != null) {
             val mIcon = BitmapDescriptorFactory.fromBitmap(markerParam.icon!!)
@@ -62,7 +58,7 @@ class GoogleMap : SupportMapFragment() {
         // must use addMarker in main looper
         Handler(Looper.getMainLooper()).post {
             googleMap.addMarker(marker)
-            newMarkerIsAdded(latLng)
+            newMarkerIsAdded(markerParam.latLng)
         }
     }
 
@@ -92,10 +88,10 @@ class GoogleMap : SupportMapFragment() {
      * this fun is used to move camera to appear all addresses on the map.
      * but can't make zoom in or out in google map
      */
-    fun moveCamera(vararg addresses: Address) {
+    fun moveCamera(vararg latLng: LatLng) {
         val latLongBoundBuilder = LatLngBounds.builder()
-        for (i in addresses) {
-            latLongBoundBuilder.include(LatLng(i.latitude, i.longitude))
+        for (i in latLng) {
+            latLongBoundBuilder.include(i)
         }
         val latLongBound = latLongBoundBuilder.build()
         val margin = resources.getDimensionPixelSize(R.dimen.map_margin)
@@ -103,8 +99,8 @@ class GoogleMap : SupportMapFragment() {
         googleMap.animateCamera(cameraUpdate)
     }
 
-    class Marker(address: Address, icon: Bitmap?, title: String?) {
-        var address = address
+    class Marker(latLng: LatLng, icon: Bitmap?, title: String?) {
+        var latLng = latLng
             private set
         var icon = icon
             private set

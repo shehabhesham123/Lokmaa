@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Admin</string>
-    <string name="welcome">Welcome</string>
+    <string name="api_key" translatable="false">AIzaSyAYf7SAuH7r-6JjeqC7GhG3M5S0EJdEiyY</string>
+    <string name="welcome">Welcome back 👋</string>
+
 
     <string name="SignUp_tv">Sign Up</string>
     <string name="SignUp_tv_text">Create account and choose favorite menu</string>
@@ -11,7 +13,7 @@
     <string name="SignUp_tv_Password">Password </string>
     <string name="SignUp_et_PasswordHint">Your Password </string>
     <string name="SignUp_bt_Register">Register </string>
-    <string name="SignUp_tv_HaveAccount">Have an account? </string>
+    <string name="SignUp_tv_HaveAccount">Have an account?  Sign in</string>
     <string name="SignUp_tv_SignIn">Sign In</string>
     <string name="SignUp_tv_text2">By clicking Register, you agree to our </string>
     <string name="SignUp_tv_text3">Terms and Date Policy </string>
@@ -19,4 +21,23 @@
     <string name="Your_Email">Your email</string>
     <string name="Password">Your password</string>
     <string name="forgot_password">Forgot Password?</string>
+
+    <string name="signInInfo">"Sign in your account"</string>
+    <string name="SignIn_Username">Username</string>
+    <string name="SignIn_Password">Password</string>
+    <string name="SignIn">Sign in </string>
+    <string name="forgetPassword">Forget your password ?</string>
+    <string name="SignIn_CreateNewAccount">"Don't have an account? Sign up"</string>
+    <string name="usernameError">Enter your username</string>
+    <string name="passwordError">Enter your password</string>
+    <string name="passwordError2">The password must be at least 8 characters long</string>
+    <string name="SignUp_tv_RestaurantName">Restaurant name</string>
+    <string name="SignUp_UploadLogo">Click to upload restaurant logo</string>
+    <string name="SignUp_tv_RestaurantLogo">Restaurant logo</string>
+    <string name="SignUp_bt_Next">Next</string>
+    <string name="DetectLocation">Location</string>
+    <string name="DetectLocation2">Detect your restaurant location</string>
+    <string name="DetectLocation3">Automatically Locating</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
 </resources>

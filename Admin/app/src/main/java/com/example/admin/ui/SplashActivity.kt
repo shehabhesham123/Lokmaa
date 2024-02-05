@@ -23,7 +23,7 @@ class SplashActivity : AppCompatActivity() {
         mThread = SeparatedThread()
         mThread.start()
         Handler(mThread.looper).postDelayed({
-            val intent = RegistrationActivity.instance(baseContext)
+            val intent = SignInActivity.instance(baseContext)
             startActivity(intent)
             finish()
         }, 2000)
@@ -34,4 +34,3 @@ class SplashActivity : AppCompatActivity() {
         mThread.quit()
     }
 }
-
