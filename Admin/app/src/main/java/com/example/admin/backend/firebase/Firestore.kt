@@ -6,11 +6,11 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.toObject
 
-abstract class Firestore(private val context: Context) {
+class Firestore(private val context: Context) {
 
     private val firebaseFirestore = FirebaseFirestore.getInstance()
 
@@ -21,11 +21,29 @@ abstract class Firestore(private val context: Context) {
      */
     fun download(
         path: String,
-        onSuccess: (item: List<Any>) -> Unit,
+        onSuccess: (item: List<QueryDocumentSnapshot>) -> Unit,
         onFailure: (msg: String) -> Unit
     ) {
         if (checkConnection(context)) {
             firebaseFirestore.collection(path).get()
+                .addOnSuccessListener {
+                    onSuccess(getDocuments(it))
+                }
+                .addOnFailureListener {
+                    onFailure("An error occurred while downloading data")
+                }
+        } else onFailure("you are not connected to the Internet")
+    }
+
+    fun download(
+        path: String,
+        whereField: String,
+        whereValue: Any,
+        onSuccess: (item: List<QueryDocumentSnapshot>) -> Unit,
+        onFailure: (msg: String) -> Unit
+    ) {
+        if (checkConnection(context)) {
+            firebaseFirestore.collection(path).whereEqualTo(whereField, whereValue).get()
                 .addOnSuccessListener {
                     onSuccess(getDocuments(it))
                 }
@@ -44,11 +62,29 @@ abstract class Firestore(private val context: Context) {
     fun upload(
         obj: Any,
         collectionPath: String,
-        onSuccess: (msg: String) -> Unit,
+        onSuccess: (id: String) -> Unit,
         onFailure: (msg: String) -> Unit
     ) {
         if (checkConnection(context)) {
             val documentId = documentId
+            firebaseFirestore.document("$collectionPath/$documentId").set(obj)
+                .addOnSuccessListener {
+                    onSuccess(documentId)
+                }
+                .addOnFailureListener {
+                    onFailure("An error occurred while uploading data")
+                }
+        } else onFailure("you are not connected to the Internet")
+    }
+
+    fun upload(
+        obj: Any,
+        collectionPath: String,
+        documentId: String,
+        onSuccess: (id: String) -> Unit,
+        onFailure: (msg: String) -> Unit
+    ) {
+        if (checkConnection(context)) {
             firebaseFirestore.document("$collectionPath/$documentId").set(obj)
                 .addOnSuccessListener {
                     onSuccess(documentId)
@@ -107,7 +143,7 @@ abstract class Firestore(private val context: Context) {
                         value?.let {
                             val list = mutableListOf<DocumentIsChanged>()
                             for (i in it.documentChanges) {
-                                list.add(DocumentIsChanged(i.document.toObject(), i.type))
+                                list.add(DocumentIsChanged(i.document, i.type))
                             }
                             onSuccess(list)
                         }
@@ -180,6 +216,24 @@ abstract class Firestore(private val context: Context) {
         } else onFailure("you are not connected to the Internet")
     }
 
+    fun update(
+        newObj: Any,
+        path: String,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String) -> Unit
+    ) {
+        if (checkConnection(context)) {
+            firebaseFirestore.document(path)
+                .set(newObj, SetOptions.merge())
+                .addOnSuccessListener {
+                    onSuccess("The data has been updated successfully")
+                }
+                .addOnFailureListener {
+                    onFailure("An error occurred while updating data")
+                }
+        } else onFailure("you are not connected to the Internet")
+    }
+
     /**
      * this fun is used to delete a document
      */
@@ -199,10 +253,10 @@ abstract class Firestore(private val context: Context) {
         } else onFailure("you are not connected to the Internet")
     }
 
-    private fun getDocuments(querySnapshot: QuerySnapshot): List<Any> {
-        val result = mutableListOf<Any>()
+    private fun getDocuments(querySnapshot: QuerySnapshot): List<QueryDocumentSnapshot> {
+        val result = mutableListOf<QueryDocumentSnapshot>()
         for (i in querySnapshot) {
-            result.add(i.toObject())
+            result.add(i)
         }
         return result
     }
@@ -214,11 +268,11 @@ abstract class Firestore(private val context: Context) {
     }
 
     companion object {
-        private val documentId = System.currentTimeMillis().toString()
+        val documentId = System.currentTimeMillis().toString()
     }
 
     /**
      * this class is used in snapshot, the obj of this class will contain the obj(document) to which the change occurred
      */
-    class DocumentIsChanged(obj: Any, whatHappened: DocumentChange.Type)
+    class DocumentIsChanged(val obj: QueryDocumentSnapshot, val whatHappened: DocumentChange.Type)
 }

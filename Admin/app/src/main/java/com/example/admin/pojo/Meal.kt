@@ -20,35 +20,46 @@ class Meal : Addition<Meal.Type> {
         }
     var name by Delegates.notNull<String>()
         private set
+    var image by Delegates.notNull<String>()
+
     var types: MutableList<Type> = mutableListOf()
         private set
     var rating: Int = Rating.NORMAL  // as default
         private set
 
-    class Type(name: String, price: Float) {
-        var name: String = name    // for example ---> small , medium , large , xlarge
+    class Type {
+        var name by Delegates.notNull<String>()   // for example ---> small , medium , large , xlarge
             private set
-        var price: Float = price
+        var price by Delegates.notNull<Float>()
             private set
+
+        constructor(name: String, price: Float){
+            this.name = name
+            this.price = price
+        }
+        constructor()
 
     }
 
     /** this constructor is used when get meals from database */
-    constructor(id: String, name: String, types: MutableList<Type>) {
+    constructor(id: String, name: String, image: String, types: MutableList<Type>) {
         this.id = id
         this.name = name
+        this.image = image
         this.types = types
     }
 
     /** this constructor is used when the types list is already ready */
-    constructor(name: String, types: MutableList<Type>) {
+    constructor(name: String, image: String, types: MutableList<Type>) {
         this.name = name
+        this.image = image
         this.types = types
     }
 
     /** this constructor is used when the types list is not ready and the types will be added later */
-    constructor(name: String) {
+    constructor(name: String, image: String) {
         this.name = name
+        this.image = image
     }
 
     /** this empty constructor is used by firebase when convert data to Location obj */

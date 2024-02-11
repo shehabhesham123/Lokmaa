@@ -1,8 +1,6 @@
 package  com.example.admin.pojo
 
 class Admin {
-    lateinit var name: String
-        private set
     lateinit var username: String     // identifier of admin obj
         private set
     var password: String? = null
@@ -11,8 +9,7 @@ class Admin {
         private set
 
     /**  this constructor is used when create new admin */
-    constructor(name: String, username: String, password: String, phone: String) {
-        this.name = name
+    constructor(username: String, password: String, phone: String) {
         this.username = username
         this.password = password
         this.phone = phone
@@ -36,13 +33,12 @@ class Admin {
         this.phone = phone
     }
 
-    fun successfulLogin(name: String) {
-        this.name = name
+    fun successfulLogin() {
         password = null
     }
 
     override fun toString(): String {
-        return "Admin [name: $name,  username: $username,   password: $password,   phone: $phone]"
+        return "Admin [username: $username,   password: $password,   phone: $phone]"
     }
 
 

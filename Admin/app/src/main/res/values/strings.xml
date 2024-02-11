@@ -36,8 +36,27 @@
     <string name="SignUp_tv_RestaurantLogo">Restaurant logo</string>
     <string name="SignUp_bt_Next">Next</string>
     <string name="DetectLocation">Location</string>
+    <string name="AdminInfo">Admin info</string>
     <string name="DetectLocation2">Detect your restaurant location</string>
     <string name="DetectLocation3">Automatically Locating</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="adminInfo2">Register your personal data to complete the restaurant registration process</string>
+    <string name="SignIn_rePassword">Re-password</string>
+    <string name="SignIn_phone">Phone number</string>
+    <string name="category">Category</string>
+    <string name="add_category">Add new category</string>
+    <string name="category_name">Categroy name</string>
+    <string name="done">Done</string>
+    <string name="cancel">Cancel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="addMeal">Add new meal</string>
+    <string name="AddNewMeal">Add new meal</string>
+    <string name="mealName">Meal name</string>
+    <string name="SignUp_Upload">Click to \n upload image</string>
+    <string name="Order">Order # %1$s</string>
+    <string name="client">Client: %1$s</string>
+    <string name="delviery">Delivery: %1$s</string>
+    <string name="orderItem">"%1$s  of  %2$s"</string>
 
 </resources>

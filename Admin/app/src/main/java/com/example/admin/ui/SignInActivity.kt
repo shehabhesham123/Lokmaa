@@ -13,10 +13,12 @@ import android.text.style.StyleSpan
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.admin.MenuActivity
 import com.example.admin.R
 import com.example.admin.backend.firebase.NormalAuth
 import com.example.admin.databinding.ActivitySigninBinding
 import com.example.admin.pojo.Admin
+import com.example.admin.utils.TempStorage
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivitySigninBinding
@@ -30,13 +32,28 @@ class SignInActivity : AppCompatActivity() {
             if (admin != null) {
                 val auth = NormalAuth(baseContext)
                 auth.signIn("${admin.username}@lokma.com", admin.password!!, {
-                    // go to main activity
+                    admin.successfulLogin()
+                    TempStorage.instance().admin = admin
+                    startActivity(MenuActivity.instance(baseContext))
                 }, {
+
                     Toast.makeText(baseContext, it, Toast.LENGTH_SHORT).show()
                 })
             }
         }
         updateUI()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val auth = NormalAuth(baseContext)
+        val username = auth.getCurrentUser()
+        if (username != null) {
+            val admin = Admin(username, "")
+            TempStorage.instance().admin = admin
+            //startActivity(MenuActivity.instance(baseContext))
+            startActivity(OrdersActivity.instance(baseContext))
+        }
     }
 
     fun checkUserInfo(): Admin? {
@@ -92,6 +109,12 @@ class SignInActivity : AppCompatActivity() {
     companion object {
         fun instance(context: Context): Intent {
             return Intent(context, SignInActivity::class.java)
+        }
+
+        fun instanceWithClearStack(context: Context): Intent {
+            val intent = Intent(context, SignInActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            return intent
         }
     }
 }

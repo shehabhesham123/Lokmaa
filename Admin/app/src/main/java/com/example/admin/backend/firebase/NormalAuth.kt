@@ -40,6 +40,18 @@ class NormalAuth(private val context: Context) : Authentication() {
         if (checkConnection(context)) auth.signOut()
     }
 
+    fun getCurrentUser(): String? {
+        val email = auth.currentUser?.email
+        var username = ""
+        email?.let {
+            for (i in it) {
+                if (i != '@') username += i
+                else return username
+            }
+        }
+        return null
+    }
+
     fun updatePassword(
         currentUser: FirebaseUser,
         newPassword: String,

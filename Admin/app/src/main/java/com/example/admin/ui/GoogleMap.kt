@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
@@ -50,7 +51,7 @@ class GoogleMap : SupportMapFragment() {
         val marker = MarkerOptions()
             .position(markerParam.latLng)
             .title(markerParam.title)
-        if (marker.icon != null) {
+        if (markerParam.icon != null) {
             val mIcon = BitmapDescriptorFactory.fromBitmap(markerParam.icon!!)
             marker.icon(mIcon)
         }
@@ -106,5 +107,9 @@ class GoogleMap : SupportMapFragment() {
             private set
         var title = title
             private set
+
+        init {
+            Log.i("shehabhesham22","$icon")
+        }
     }
 }

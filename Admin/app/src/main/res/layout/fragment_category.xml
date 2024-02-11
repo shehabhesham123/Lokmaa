@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.CategoryFragment"
+    android:padding="@dimen/_15sdp"
+    android:orientation="vertical"
+    android:background="@color/secondaryColor">
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addNewMeal"
+        android:backgroundTint="@color/primaryColor"
+        android:text="@string/addMeal"
+        android:textSize="@dimen/_13ssp"
+        app:icon="@drawable/add"
+        android:textColor="@color/secondaryColor"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mealsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_15sdp"/>
+
+</LinearLayout>

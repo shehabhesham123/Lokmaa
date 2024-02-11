@@ -38,8 +38,10 @@ class Address : Location {
                 val separatedThread = SeparatedThread()
                 separatedThread.start()
                 Handler(separatedThread.looper).post {
+                    val addressJson =
+                        geocodingJson(context, Location(it.latitude, it.longitude))
                     val address =
-                        geocodingJson(context, Location(it.latitude, it.longitude)).toString()
+                        addressJson.getJSONArray("results").getJSONObject(0).getString("formatted")
                     onSuccess(
                         Address(
                             it.latitude,
