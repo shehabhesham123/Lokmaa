@@ -50,7 +50,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-auth:22.3.1")
-    implementation("com.google.firebase:firebase-firestore:24.10.1")
+    implementation("com.google.firebase:firebase-firestore:24.10.2")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     testImplementation("junit:junit:4.13.2")
     implementation ("com.intuit.sdp:sdp-android:1.0.6")
@@ -63,6 +63,7 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation ("com.airbnb.android:lottie:3.4.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
+    implementation ("com.github.tapadoo:alerter:7.2.4")
 
 
 }

@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.admin.R
 import com.example.admin.databinding.BottomSheetBinding
 import com.example.admin.pojo.Order
@@ -15,14 +13,14 @@ import com.example.admin.utils.TempStorage
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textview.MaterialTextView
 
-class BottomSheet : BottomSheetDialogFragment() {
+class BottomSheet : BottomSheetDialogFragment(), ViewHolder {
 
-    private var order: Order? = null
+    private var mOrder: Order? = null
     private lateinit var mBinding: BottomSheetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        order = TempStorage.instance().order
+        mOrder = TempStorage.instance().order
     }
 
     override fun onCreateView(
@@ -36,37 +34,40 @@ class BottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mBinding.order.text = getString(R.string.Order, order!!.id)
-        mBinding.client.text = getString(R.string.client, order!!.client.name)
-        mBinding.delivery.text = getString(R.string.delviery, order!!.delivery.name)
+        mBinding.order.text = getString(R.string.Order, mOrder!!.id)
+        mBinding.client.text = getString(R.string.client, mOrder!!.client.name)
+        mBinding.delivery.text = getString(R.string.delviery, mOrder!!.delivery.name)
+        mBinding.date.text = mOrder!!.date
+        mBinding.totalPrice.text = getString(R.string.totalPrice, getTotalPrice().toString())
+
         mBinding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mBinding.recyclerView.adapter = OrderItemsAdapter(order!!.items)
+        mBinding.recyclerView.adapter = Adapter2(mOrder!!.items, this)
     }
 
-
-    class OrderItemsAdapter(val orderItems:MutableList<OrderItem>):RecyclerView.Adapter<OrderItemsAdapter.VH>(){
-
-        class VH(viewItem:View):ViewHolder(viewItem){
-            private val mTextView = viewItem.findViewById<MaterialTextView>(R.id.orderItem)
-            fun bind(orderItem: OrderItem){
-                val res = itemView.resources
-                mTextView.text = res.getString(R.string.orderItem,"${orderItem.quantity}"," ${orderItem.meal.name}")
-            }
+    private fun getTotalPrice(): Float {
+        var total = 0f
+        for (i in mOrder!!.items) {
+            total += i.type.price
         }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.order_item,parent,false)
-            return VH(view)
-        }
-
-        override fun getItemCount(): Int {
-            return orderItems.size
-        }
-
-        override fun onBindViewHolder(holder: VH, position: Int) {
-            holder.bind(orderItems[position])
-        }
-
+        return total
     }
 
+    override fun setOnCreateViewHolder(parent: ViewGroup): ViewHolder2 {
+        val view = LayoutInflater.from(requireContext()).inflate(R.layout.one_order, parent, false)
+        return OrderItemHolder(view)
+    }
+}
+
+class OrderItemHolder(viewItem: View) : ViewHolder2(viewItem) {
+    private val mTextView = viewItem.findViewById<MaterialTextView>(R.id.orderItem)
+    override fun bind(item: Any) {
+        val orderItem = item as OrderItem
+        val res = itemView.resources
+        mTextView.text = res.getString(
+            R.string.orderItem,
+            "${orderItem.quantity}",
+            " ${orderItem.meal.name}",
+            orderItem.type.name
+        )
+    }
 }

@@ -9,8 +9,7 @@
     android:focusable="true"
     android:foreground="?android:selectableItemBackground"
     app:cardBackgroundColor="@color/primaryColor"
-    app:cardCornerRadius="@dimen/_3sdp"
-    app:cardUseCompatPadding="true">
+    >
 
     <TextView
         android:id="@+id/OrderId"

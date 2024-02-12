@@ -6,8 +6,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.DialogFragment
-import com.example.admin.AddCategoryListener
-import com.example.admin.R
 import com.example.admin.databinding.DialogViewBinding
 
 class Dialog : DialogFragment() {

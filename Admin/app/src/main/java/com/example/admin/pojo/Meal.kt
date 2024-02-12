@@ -38,7 +38,6 @@ class Meal : Addition<Meal.Type> {
             this.price = price
         }
         constructor()
-
     }
 
     /** this constructor is used when get meals from database */

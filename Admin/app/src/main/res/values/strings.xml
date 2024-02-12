@@ -57,6 +57,11 @@
     <string name="Order">Order # %1$s</string>
     <string name="client">Client: %1$s</string>
     <string name="delviery">Delivery: %1$s</string>
-    <string name="orderItem">"%1$s  of  %2$s"</string>
+    <string name="orderItem">"%1$s  of  %2$s  with  %3$s  size"</string>
+    <string name="ResInfo">Restaurant Info.</string>
+    <string name="ResInfo2">Create your restaurant to enjoy with our features</string>
+    <string name="Orders">Orders</string>
+    <string name="Menu">Menu</string>
+    <string name="totalPrice">Price: %1$s EGP</string>
 
 </resources>

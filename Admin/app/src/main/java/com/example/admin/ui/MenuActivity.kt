@@ -1,4 +1,4 @@
-package com.example.admin
+package com.example.admin.ui
 
 import android.content.Context
 import android.content.Intent
@@ -12,8 +12,6 @@ import com.example.admin.backend.firebase.Firestore
 import com.example.admin.databinding.ActivityMenuBinding
 import com.example.admin.pojo.Category
 import com.example.admin.pojo.Restaurant
-import com.example.admin.ui.CategoryFragment
-import com.example.admin.ui.Dialog
 import com.example.admin.utils.Const
 import com.example.admin.utils.TempStorage
 import com.google.android.material.tabs.TabLayoutMediator

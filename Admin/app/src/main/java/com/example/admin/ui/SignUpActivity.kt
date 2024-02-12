@@ -22,12 +22,18 @@ import com.example.admin.utils.TempStorage
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivitySignupBinding
-    private lateinit var register: ActivityResultLauncher<Intent>
+    private lateinit var mRegister: ActivityResultLauncher<Intent>
     private var tempStorage = TempStorage.instance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        setSupportActionBar(mBinding.toolbar)
+        supportActionBar?.title = "Sign up"
+
+        updateUI()
 
         setUpRegister()
 
@@ -41,7 +47,6 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
-        updateUI()
     }
 
     private fun checkResInfo(): Boolean {
@@ -67,7 +72,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun setUpRegister() {
-        register = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        mRegister = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             it.data?.run {
                 val image = data
                 mBinding.SignUpImageViewLogo.setImageURI(image)
@@ -81,7 +86,7 @@ class SignUpActivity : AppCompatActivity() {
         val intent = Intent()
         intent.action = Intent.ACTION_PICK
         intent.data = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        register.launch(intent)
+        mRegister.launch(intent)
 
     }
 

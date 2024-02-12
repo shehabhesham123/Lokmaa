@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:background="@color/primaryTextColor">
+    android:background="@color/primaryTextColor"
+    android:orientation="vertical">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/order"
-        android:drawablePadding="@dimen/_5sdp"
-        android:text="@string/Order"
         android:layout_margin="@dimen/_18sdp"
+        android:drawableStart="@drawable/order"
+        android:drawablePadding="@dimen/_7sdp"
+        android:text="@string/Order"
         android:textColor="@color/secondaryTextColor"
         android:textSize="@dimen/_20ssp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,41 +25,64 @@
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/_9sdp"
+        android:drawableStart="@drawable/date"
+        android:drawablePadding="@dimen/_5sdp"
+        android:gravity="center"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/order"
-        android:text="15/6/2024" />
+        tools:text="15/6/2024" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/client"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_5sdp"
+        android:drawableStart="@drawable/client"
+        android:drawablePadding="@dimen/_5sdp"
         android:text="@string/client"
         android:textColor="@color/secondaryTextColor"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_11ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toTopOf="@+id/date" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delviery"
         android:layout_marginTop="@dimen/_7sdp"
+        android:drawableStart="@drawable/delivery"
+        android:drawablePadding="@dimen/_5sdp"
+        android:text="@string/delviery"
         android:textColor="@color/secondaryTextColor"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_11ssp"
         app:layout_constraintStart_toStartOf="@+id/client"
         app:layout_constraintTop_toBottomOf="@+id/client" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:drawableStart="@drawable/money"
+        android:drawablePadding="@dimen/_5sdp"
+        android:text="@string/totalPrice"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/delivery" />
+
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginHorizontal="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:background="#E8E8E8"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginHorizontal="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/delivery" />
+        app:layout_constraintTop_toBottomOf="@+id/totalPrice"
+        tools:layout_editor_absoluteX="39dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -67,8 +90,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delivery" />
-
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:layout_editor_absoluteX="13dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

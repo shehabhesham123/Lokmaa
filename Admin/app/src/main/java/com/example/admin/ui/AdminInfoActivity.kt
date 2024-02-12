@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.backend.firebase.Firestore
 import com.example.admin.backend.firebase.NormalAuth
@@ -19,83 +19,117 @@ import com.google.android.material.snackbar.Snackbar
 
 class AdminInfoActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivityAdminInfoBinding
+    private lateinit var mTempStorage: TempStorage
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityAdminInfoBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
+        mTempStorage = TempStorage.instance()
+
         setSupportActionBar(mBinding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "Sign up"
 
         mBinding.SignInBtnRegister.setOnClickListener {
-            if (check()) {
-                val username = mBinding.SignInInputETUsername.text.toString()
-                val password = mBinding.SignInInputETPassword.text.toString()
-                val phone = mBinding.SignInInputETPhone.text.toString()
-                val tempStorage = TempStorage.instance()
-
-                val admin = Admin(username, password, phone)
-                val firestore = Firestore(baseContext)
-                val storage = Storage(baseContext)
-                val auth = NormalAuth(baseContext)
-
-                auth.signUp("${admin.username}@lokma.com", admin.password!!, {
-                    firestore.upload(admin, Const.ADMIN_PATH, admin.username, {
-
-                    }, {
-                        Snackbar.make(mBinding.SignInInputETUsername,it,Snackbar.LENGTH_SHORT).show()
-                    })
-                    admin.successfulLogin()
-                    val res = Restaurant(
-                        tempStorage.restaurantName!!,
-                        tempStorage.restaurantLogo!!,
-                        tempStorage.restaurantAddress!!,
-                        Menu(),
-                        admin
-                    )
-                    res.id = Firestore.documentId
-                    Log.i("shehabhesham","id: ${res.id}")
-                    Log.i("shehabhesham","username: ${res.admin!!.username}")
-                    storage.upload(Uri.parse(res.logo), Const.LOGO_PATH, {
-                        res.logo = it
-
-                        firestore.upload(res, Const.RESTAURANT_PATH, res.id!!, {
-                            startActivity(SignInActivity.instanceWithClearStack(baseContext))
-                            finish()
-                        }, {})
-                    }, {}, {})
-
-                }, {})
-
-
+            check()?.run {
+                register(this)
             }
         }
     }
 
-    private fun check(): Boolean {
+    private fun check(): Admin? {
         val username = mBinding.SignInInputETUsername.text.toString()
         val password = mBinding.SignInInputETPassword.text.toString()
         val phone = mBinding.SignInInputETPhone.text.toString()
         if (username.isEmpty()) {
             mBinding.SignInInputETUsername.error = "Enter your username"
-            return false
+            return null
         }
         if (password.isEmpty()) {
             mBinding.SignInInputETPassword.error = "Enter your password"
-            return false
+            return null
         } else if (password.length < 8) {
             mBinding.SignInInputETPassword.error =
                 "password must be 8 letter at least"
-            return false
+            return null
         }
         if (phone.isEmpty()) {
             mBinding.SignInInputETPhone.error = "Enter your phone"
-            return false
+            return null
         } else if (phone.length != 11) {
             mBinding.SignInInputETPhone.error = "Enter corrent number"
-            return false
+            return null
         }
-        return true
+        return Admin(username, password, phone)
+    }
+
+    private fun registerButtonVisibility(isVisible: Boolean) {
+        if (!isVisible) {
+            mBinding.SignInBtnRegister.visibility = View.GONE
+            mBinding.LottieAnimation.visibility = View.VISIBLE
+        } else {
+            mBinding.SignInBtnRegister.visibility = View.VISIBLE
+            mBinding.LottieAnimation.visibility = View.GONE
+        }
+    }
+
+    private fun register(admin: Admin) {
+        registerButtonVisibility(false)
+
+        val firestore = Firestore(baseContext)
+        val storage = Storage(baseContext)
+        val auth = NormalAuth(baseContext)
+
+        auth.signUp("${admin.username}@lokma.com", admin.password!!,
+            {
+                // Auth onSuccess
+
+                firestore.upload(admin, Const.ADMIN_PATH, admin.username,
+                    {
+                        // Firestore onSuccess
+                    },
+                    {
+                        // Firestore onFailure
+                        Snackbar.make(
+                            mBinding.SignInInputETUsername,
+                            it,
+                            Snackbar.LENGTH_SHORT
+                        ).show()
+                        registerButtonVisibility(true)
+                    })
+
+                admin.successfulLogin()
+
+                val res = Restaurant(
+                    mTempStorage.restaurantName!!,
+                    mTempStorage.restaurantLogo!!,
+                    mTempStorage.restaurantAddress!!,
+                    Menu(),
+                    admin
+                )
+
+                res.id = Firestore.documentId
+
+                storage.upload(Uri.parse(res.logo), Const.LOGO_PATH,
+                    {
+                        // Storage onSuccess
+                        res.logo = it
+                        firestore.upload(res, Const.RESTAURANT_PATH, res.id!!,
+                            {
+                                // Firestore onSuccess
+                                startActivity(SignInActivity.instanceWithClearStack(baseContext))
+                                finish()
+                            }, {
+                                registerButtonVisibility(true)
+                            })
+                    }, {
+                        registerButtonVisibility(true)
+                    }, {})
+            }, {
+                registerButtonVisibility(true)
+            })
     }
 
     companion object {

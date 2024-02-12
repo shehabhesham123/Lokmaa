@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/secondaryColor"
     android:orientation="vertical"
-    tools:context=".MenuActivity">
+    tools:context=".ui.MenuActivity">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

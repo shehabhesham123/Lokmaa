@@ -13,7 +13,6 @@ import android.text.style.StyleSpan
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.admin.MenuActivity
 import com.example.admin.R
 import com.example.admin.backend.firebase.NormalAuth
 import com.example.admin.databinding.ActivitySigninBinding
@@ -22,41 +21,64 @@ import com.example.admin.utils.TempStorage
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var mBinding: ActivitySigninBinding
+    private lateinit var mAuth: NormalAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivitySigninBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        mBinding.SignInBtnSignIn.setOnClickListener {
-            val admin = checkUserInfo()
-            if (admin != null) {
-                val auth = NormalAuth(baseContext)
-                auth.signIn("${admin.username}@lokma.com", admin.password!!, {
-                    admin.successfulLogin()
-                    TempStorage.instance().admin = admin
-                    startActivity(MenuActivity.instance(baseContext))
-                }, {
+        setSupportActionBar(mBinding.toolbar)
+        supportActionBar?.title = "Sign in"
 
-                    Toast.makeText(baseContext, it, Toast.LENGTH_SHORT).show()
-                })
+        mAuth = NormalAuth(baseContext)
+
+        updateUI()
+        mBinding.SignIn.setOnClickListener {
+            val admin = checkAdminInfo()
+            if (admin != null) {
+                signIn(admin)
             }
         }
-        updateUI()
+
     }
 
     override fun onResume() {
         super.onResume()
-        val auth = NormalAuth(baseContext)
-        val username = auth.getCurrentUser()
+
+        val username = mAuth.getCurrentUser()
         if (username != null) {
-            val admin = Admin(username, "")
-            TempStorage.instance().admin = admin
-            //startActivity(MenuActivity.instance(baseContext))
-            startActivity(OrdersActivity.instance(baseContext))
+            TempStorage.instance().admin = Admin(username, "")
+            startActivity(MainActivity.instance(baseContext))
         }
     }
 
-    fun checkUserInfo(): Admin? {
+    private fun signButtonVisibility(isVisible: Boolean) {
+        if (!isVisible) {
+            mBinding.SignIn.visibility = View.GONE
+            mBinding.LottieAnimation.visibility = View.VISIBLE
+        } else {
+            mBinding.SignIn.visibility = View.VISIBLE
+            mBinding.LottieAnimation.visibility = View.GONE
+        }
+    }
+
+    private fun signIn(admin: Admin) {
+        signButtonVisibility(false)
+        mAuth.signIn("${admin.username}@lokma.com", admin.password!!,
+            {
+                // onSuccess
+                admin.successfulLogin()
+                TempStorage.instance().admin = admin
+                startActivity(MainActivity.instance(baseContext))
+            }, {
+                // onFailure
+                signButtonVisibility(true)
+                Toast.makeText(baseContext, it, Toast.LENGTH_SHORT).show()
+            })
+    }
+
+    private fun checkAdminInfo(): Admin? {
         val usernameText = mBinding.SignInInputETUsername.text.toString()
         val passwordText = mBinding.SignInInputETPassword.text.toString()
         if (usernameText.isEmpty() && usernameText.isBlank()) {

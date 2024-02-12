@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/primaryTextColor"
+    android:orientation="vertical">
 
-    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryDarkColor">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:titleTextColor="@color/primaryTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <LinearLayout
         android:id="@+id/SignUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/PrimaryBackgroundCloro"
+        android:background="@color/primaryTextColor"
         android:orientation="vertical"
         android:padding="@dimen/_15sdp"
         tools:context=".ui.MainActivity">
-
-        <ImageView
-            android:id="@+id/SignUpFragment_ImageView_ArrowBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/SignUp_tv_SignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/SignUp_tv"
+            android:text="@string/ResInfo"
             android:textColor="@color/secondaryTextColor"
             android:textSize="@dimen/_22ssp"
             android:textStyle="bold" />
@@ -36,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:text="@string/SignUp_tv_text"
+            android:text="@string/ResInfo2"
             android:textAlignment="textStart"
             android:textColor="@color/ThirdTextColor"
             android:textSize="@dimen/_12ssp" />
@@ -46,9 +54,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_18sdp"
-            android:textColor="@color/grey"
             android:text="@string/SignUp_tv_RestaurantName"
-            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -58,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_9sdp"
-            app:boxBackgroundColor="#fafafa"
+            app:boxBackgroundColor="#f8f8f8"
             app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
             app:boxCornerRadiusBottomStart="@dimen/_10sdp"
             app:boxCornerRadiusTopEnd="@dimen/_10sdp"
@@ -83,9 +91,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_18sdp"
-            android:textColor="@color/grey"
             android:text="@string/SignUp_tv_RestaurantLogo"
-            android:textSize="@dimen/_12ssp" />
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_13ssp" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -94,28 +102,27 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/SignUp_CardView_UploadLogo"
-                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#F8F8F8"
                 app:cardCornerRadius="@dimen/_15sdp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="#00FFFFFF"
-                app:cardMaxElevation="0dp"
-                android:focusable="true">
+                app:cardMaxElevation="0dp">
 
                 <ImageView
                     android:id="@+id/SignUp_ImageView_logo"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp"
-                    android:scaleType="centerCrop"
-                    android:backgroundTint="#fafafa" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:id="@+id/SignUp_uploadLogoText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:backgroundTint="#fafafa"
+                    android:backgroundTint="#f8f8f8"
                     android:drawablePadding="@dimen/_5sdp"
                     android:text="@string/SignUp_UploadLogo"
                     android:textColor="@color/grey"
@@ -125,7 +132,7 @@
 
             </androidx.cardview.widget.CardView>
 
-           </FrameLayout>
+        </FrameLayout>
 
 
         <FrameLayout
@@ -168,4 +175,4 @@
     </LinearLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

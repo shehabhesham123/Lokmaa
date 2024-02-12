@@ -16,10 +16,10 @@ class SplashActivity : AppCompatActivity() {
         mBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
 
-        goToMainActivity()
+        goToNextActivity()
     }
 
-    private fun goToMainActivity() {
+    private fun goToNextActivity() {
         mThread = SeparatedThread()
         mThread.start()
         Handler(mThread.looper).postDelayed({

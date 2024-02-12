@@ -9,10 +9,18 @@
     android:orientation="vertical"
     tools:context=".ui.LocationActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/primaryDarkColor">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:titleTextColor="@color/primaryTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,10 +62,10 @@
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/fragmentContainer"
-                android:tag="TAG"
                 android:name="com.example.admin.GoogleMap"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:tag="TAG" />
         </androidx.cardview.widget.CardView>
 
         <com.google.android.material.button.MaterialButton

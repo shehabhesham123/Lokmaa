@@ -4,16 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/_22sdp"
     android:background="@color/primaryTextColor"
-
+    android:orientation="vertical"
     tools:context=".ui.SignInActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryDarkColor">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:titleTextColor="@color/primaryTextColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:padding="@dimen/_22sdp"
         android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
@@ -22,7 +33,7 @@
             android:layout_height="wrap_content"
             android:text="@string/welcome"
             android:textColor="@color/secondaryTextColor"
-            android:textSize="@dimen/_20ssp" />
+            android:textSize="@dimen/_23ssp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/materialTextView3"
@@ -38,10 +49,10 @@
             android:id="@+id/SignUp_tv_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/grey"
             android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/SignIn_Username"
-            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -78,19 +89,19 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/SignIn_Password"
-            android:textSize="@dimen/_12ssp"
             android:textColor="@color/grey"
+            android:textSize="@dimen/_13ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/SignUp_et_Password"
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
-            app:boxBackgroundColor="#fafafa"
+            app:boxBackgroundColor="#F8F8F8"
             app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
             app:boxCornerRadiusBottomStart="@dimen/_10sdp"
             app:boxCornerRadiusTopEnd="@dimen/_10sdp"
@@ -121,17 +132,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/SignUp_et_Password" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/SignIn_Btn_SignIn"
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="wrap_content"
+
             android:layout_marginTop="@dimen/_30sdp"
-            android:maxLength="20"
-            android:maxLines="1"
-            android:text="@string/SignIn"
-            app:cornerRadius="@dimen/_10sdp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialTextView4" />
+            app:layout_constraintTop_toBottomOf="@+id/materialTextView4">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/SignIn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_45sdp"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:text="@string/SignIn"
+                android:textSize="@dimen/_14ssp"
+                app:cornerRadius="@dimen/_10sdp" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/LottieAnimation"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/progressbar" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/SignIn_CreateNewAccount"
@@ -141,6 +171,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:text="@string/SignIn_CreateNewAccount"
             android:textColor="@color/grey"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialButton" />

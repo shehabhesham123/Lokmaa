@@ -139,7 +139,7 @@ class Firestore(private val context: Context) {
         if (checkConnection(context)) {
             listenerRegistration =
                 firebaseFirestore.collection(path).addSnapshotListener { value, error ->
-                    if (error != null) {
+                    if (error == null) {
                         value?.let {
                             val list = mutableListOf<DocumentIsChanged>()
                             for (i in it.documentChanges) {

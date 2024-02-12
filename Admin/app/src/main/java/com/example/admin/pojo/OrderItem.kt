@@ -7,13 +7,16 @@ class OrderItem {
         private set
     var quantity by Delegates.notNull<Int>()
         private set
+    var type by Delegates.notNull<Meal.Type>()
+        private set
 
     /**
      * this constructor is used to create new orderItem
      */
-    constructor(meal: Meal, quantity: Int){
+    constructor(meal: Meal, quantity: Int, type: Meal.Type) {
         this.meal = meal
         this.quantity = quantity
+        this.type = type
     }
 
     /**
