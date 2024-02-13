@@ -1,9 +1,11 @@
 package com.example.admin.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.admin.R
 import com.example.admin.databinding.BottomSheetBinding
@@ -53,16 +55,17 @@ class BottomSheet : BottomSheetDialogFragment(), ViewHolder {
     }
 
     override fun setOnCreateViewHolder(parent: ViewGroup): ViewHolder2 {
-        val view = LayoutInflater.from(requireContext()).inflate(R.layout.one_order, parent, false)
+        val view = LayoutInflater.from(requireContext()).inflate(R.layout.order_item, parent, false)
         return OrderItemHolder(view)
     }
 }
 
 class OrderItemHolder(viewItem: View) : ViewHolder2(viewItem) {
-    private val mTextView = viewItem.findViewById<MaterialTextView>(R.id.orderItem)
+    private val mTextView = itemView.findViewById<TextView>(R.id.orderItem)
     override fun bind(item: Any) {
         val orderItem = item as OrderItem
         val res = itemView.resources
+
         mTextView.text = res.getString(
             R.string.orderItem,
             "${orderItem.quantity}",

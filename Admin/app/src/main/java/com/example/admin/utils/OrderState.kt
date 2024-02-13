@@ -4,5 +4,6 @@ class OrderState {
     companion object {
         const val ACCEPTED: Int = 0b0
         const val CANCELED: Int = 0b1
+        const val PREPARE: Int = 0b10
     }
 }

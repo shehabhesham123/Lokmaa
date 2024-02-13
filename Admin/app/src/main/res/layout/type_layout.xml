@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/secondaryColor"
@@ -12,12 +13,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_5sdp"
-        app:boxBackgroundColor="#fafafa"
+        android:textColorHint="@color/grey"
+        app:boxBackgroundColor="#f8f8f8"
         app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
         app:boxCornerRadiusBottomStart="@dimen/_10sdp"
         app:boxCornerRadiusTopEnd="@dimen/_10sdp"
         app:boxCornerRadiusTopStart="@dimen/_10sdp"
         app:boxStrokeWidth="0dp"
+        app:hintEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/SignUp_Et_price"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -26,9 +29,12 @@
             android:id="@+id/TypeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/size"
             android:inputType="text"
             android:paddingStart="@dimen/_15sdp"
-            android:textColor="@color/secondaryTextColor" />
+            android:textColor="@color/secondaryTextColor"
+            android:textColorHint="@color/grey"
+            tools:ignore="RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -38,12 +44,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
-        app:boxBackgroundColor="#fafafa"
+        android:textColorHint="@color/grey"
+        app:boxBackgroundColor="#f8f8f8"
         app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
         app:boxCornerRadiusBottomStart="@dimen/_10sdp"
         app:boxCornerRadiusTopEnd="@dimen/_10sdp"
         app:boxCornerRadiusTopStart="@dimen/_10sdp"
         app:boxStrokeWidth="0dp"
+        app:hintEnabled="true"
         app:layout_constraintEnd_toStartOf="@+id/extendedFloatingActionButton"
         app:layout_constraintStart_toEndOf="@id/SignUp_Et_Name"
         app:layout_constraintTop_toTopOf="parent">
@@ -52,9 +60,12 @@
             android:id="@+id/typePrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:hint="@string/price2"
+            android:inputType="numberDecimal"
             android:paddingStart="@dimen/_15sdp"
-            android:textColor="@color/secondaryTextColor" />
+            android:textColor="@color/secondaryTextColor"
+            android:textColorHint="@color/grey"
+            tools:ignore="RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -62,8 +73,10 @@
         android:layout_width="@dimen/_50sdp"
         android:layout_height="@dimen/_50sdp"
         android:backgroundTint="@color/primaryColor"
-        app:icon="@drawable/done"
+        android:elevation="0dp"
         app:elevation="0dp"
+        app:icon="@drawable/done2"
+        app:iconTint="@color/primaryTextColor"
         app:layout_constraintBottom_toBottomOf="@+id/SignUp_Et_price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

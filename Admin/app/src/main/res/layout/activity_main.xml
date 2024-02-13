@@ -14,10 +14,33 @@
         android:background="@color/primaryDarkColor"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:importantForAccessibility="no"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_18sdp"
+                android:src="@drawable/lokma" />
+
+            <ImageView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center_vertical"
+                android:importantForAccessibility="no"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/lokma2" />
+
+        </FrameLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView

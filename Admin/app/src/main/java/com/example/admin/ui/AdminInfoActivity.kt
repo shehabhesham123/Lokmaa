@@ -110,7 +110,7 @@ class AdminInfoActivity : AppCompatActivity() {
                     admin
                 )
 
-                res.id = Firestore.documentId
+                res.id = Firestore.documentId()
 
                 storage.upload(Uri.parse(res.logo), Const.LOGO_PATH,
                     {

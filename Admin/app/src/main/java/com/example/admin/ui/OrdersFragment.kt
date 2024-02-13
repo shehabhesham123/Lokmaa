@@ -1,17 +1,12 @@
 package com.example.admin.ui
 
-import android.R.attr.top
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -24,6 +19,7 @@ import com.example.admin.databinding.FragmentOrdersBinding
 import com.example.admin.pojo.Order
 import com.example.admin.pojo.Restaurant
 import com.example.admin.utils.Const
+import com.example.admin.utils.OrderState
 import com.example.admin.utils.TempStorage
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.ListenerRegistration
@@ -59,8 +55,6 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
 
         val ordersPresenter = OrdersPresenter(this)
         ordersPresenter.getOrders(requireContext(), mRestaurant!!.id!!)
-
-
     }
 
     override fun onDestroy() {
@@ -69,6 +63,7 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
     }
 
     override fun onGetOrders(orders: MutableList<Order>) {
+        if (orders.isNotEmpty()) mBinding.no.visibility = View.GONE
         this.orders = orders
         addSnapShotToOrders()
         setUpRecyclerView()
@@ -77,7 +72,12 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
     private fun setUpRecyclerView() {
         mBinding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         mBinding.recyclerView.adapter = Adapter2(orders, this)
-        mBinding.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL))
+        mBinding.recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                requireContext(),
+                LinearLayoutManager.VERTICAL
+            )
+        )
         attachItemTouchToRecycler()
     }
 
@@ -110,26 +110,46 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
                     actionState,
                     isCurrentlyActive
                 )
-                val background = ResourcesCompat.getDrawable(resources,R.drawable.l1,null)
-                background!!.setBounds(
-                    0,
-                    viewHolder.itemView.top,
-                    (viewHolder.itemView.right + dX).toInt(),
-                    viewHolder.itemView.bottom
-                );
-                background.draw(c)
 
+                val order = orders[viewHolder.adapterPosition]
+                if (order.state == OrderState.PREPARE) {
+                    if (dX > 0) {
+                        val background = ResourcesCompat.getDrawable(resources, R.drawable.l1, null)
+                        background!!.setBounds(
+                            viewHolder.itemView.left,
+                            viewHolder.itemView.top,
+                            viewHolder.itemView.right + dX.toInt(),
+                            viewHolder.itemView.bottom
+                        )
+                        background.draw(c)
+                    } else {
+                        val background = ResourcesCompat.getDrawable(resources, R.drawable.l2, null)
+                        background!!.setBounds(
+                            viewHolder.itemView.left + dX.toInt(),
+                            viewHolder.itemView.top,
+                            viewHolder.itemView.right,
+                            viewHolder.itemView.bottom
+                        )
+                        background.draw(c)
+                    }
+                }
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val orderId = orders[position].id
-                orders.removeAt(position)
-                mBinding.recyclerView.adapter?.notifyItemRemoved(position)
-                mFirestore.delete("${Const.ordersPath(mRestaurant!!.id!!)}/$orderId", {
-                    Toast.makeText(requireContext(), "Delete successfully", Toast.LENGTH_SHORT)
-                        .show()
-                }, {})
+                val order = orders[position]
+                if (order.state != OrderState.PREPARE) {
+                    mBinding.recyclerView.adapter?.notifyItemChanged(position)
+                } else {
+                    if (direction == ItemTouchHelper.LEFT)
+                        order.state = OrderState.ACCEPTED
+                    else
+                        order.state = OrderState.CANCELED
+
+                    mFirestore.update(order, "${Const.ordersPath(mRestaurant?.id!!)}/${order.id}", {
+                        mBinding.recyclerView.adapter?.notifyItemChanged(position)
+                    }, {})
+                }
 
             }
         }).attachToRecyclerView(mBinding.recyclerView)
@@ -144,6 +164,7 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
                             orders.add(i.obj.toObject(Order::class.java))
                             mBinding.recyclerView.adapter?.notifyItemInserted(orders.size - 1)
                             createAlerter()
+                            mBinding.no.visibility = View.GONE
                         }
                     }
             }, {
@@ -177,12 +198,34 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
 
 class OrderHolder(itemView: View, private val listener: OrderListener) : ViewHolder2(itemView) {
     private val mTextView = itemView.findViewById<TextView>(R.id.OrderId)
+    private val background = itemView.findViewById<FrameLayout>(R.id.background)
+
     override fun bind(item: Any) {
         val order = item as Order
         val resources = itemView.context.resources
         mTextView.text = resources.getString(R.string.Order, order.id)
         itemView.setOnClickListener {
             listener.onClick(order)
+        }
+        updateUI(order.state)
+    }
+
+    private fun updateUI(state: Int) {
+        when (state) {
+            OrderState.PREPARE -> {
+                background.setBackgroundResource(R.drawable.l3)
+                mTextView.setTextColor(itemView.resources.getColor(R.color.primaryColor, null))
+            }
+
+            OrderState.ACCEPTED -> {
+                background.setBackgroundResource(R.color.primaryColor)
+                mTextView.setTextColor(itemView.resources.getColor(R.color.primaryTextColor, null))
+            }
+
+            else -> {
+                background.setBackgroundResource(R.color.red)
+                mTextView.setTextColor(itemView.resources.getColor(R.color.primaryTextColor, null))
+            }
         }
     }
 }

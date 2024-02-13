@@ -19,7 +19,7 @@ class Meal : Addition<Meal.Type> {
 
         }
     var name by Delegates.notNull<String>()
-        private set
+
     var image by Delegates.notNull<String>()
 
     var types: MutableList<Type> = mutableListOf()
@@ -33,10 +33,11 @@ class Meal : Addition<Meal.Type> {
         var price by Delegates.notNull<Float>()
             private set
 
-        constructor(name: String, price: Float){
+        constructor(name: String, price: Float) {
             this.name = name
             this.price = price
         }
+
         constructor()
     }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.util.Log
 import com.example.admin.backend.Network.Companion.checkConnection
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
@@ -25,7 +26,8 @@ class Storage(private val context: Context) {
         onProgress: (progress: Long) -> Unit
     ) {
         if (checkConnection(context)) {
-            val mImageId = imageId
+            val mImageId = imageId()
+            Log.i("shehab","id: $mImageId")
             storageRef.child(folderPath).child(mImageId.toString()).putFile(uri)
                 .addOnSuccessListener {
                     it.storage.downloadUrl.addOnSuccessListener { uri ->
@@ -53,7 +55,7 @@ class Storage(private val context: Context) {
         onProgress: (progress: Long) -> Unit
     ) {
         if (checkConnection(context)) {
-            val mImageId = imageId
+            val mImageId = imageId()
             storageRef.child(folderPath).child(mImageId.toString()).putBytes(byteArray)
                 .addOnSuccessListener {
                     it.storage.downloadUrl.addOnSuccessListener { uri ->
@@ -134,6 +136,6 @@ class Storage(private val context: Context) {
     }
 
     companion object {
-        private val imageId = System.currentTimeMillis()
+        fun imageId() = System.currentTimeMillis()
     }
 }

@@ -63,5 +63,10 @@
     <string name="Orders">Orders</string>
     <string name="Menu">Menu</string>
     <string name="totalPrice">Price: %1$s EGP</string>
+    <string name="price">%1$s EGP</string>
+    <string name="size">Size</string>
+    <string name="price2">Price</string>
+    <string name="SignOut">Sign out</string>
+    <string name="no">There is no content to display</string>
 
 </resources>

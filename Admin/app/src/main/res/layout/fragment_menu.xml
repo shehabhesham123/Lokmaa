@@ -5,16 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/secondaryColor"
-    android:orientation="vertical"
-    tools:context=".ui.MenuActivity">
+    android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         app:tabTextAppearance="@style/TabLayoutStyle"
-        android:background="@color/secondaryColor"
+        android:background="@color/primaryTextColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/no"
+        android:textColor="@color/primaryColor"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager2"
@@ -23,18 +35,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
+
+
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/addCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_15sdp"
+        android:visibility="visible"
         android:backgroundTint="@color/primaryDarkColor"
         android:text="@string/category"
-        app:iconTint="@color/secondaryColor"
-        android:textColor="@color/secondaryColor"
+        app:iconTint="@color/primaryTextColor"
+        android:textColor="@color/primaryTextColor"
         android:textSize="@dimen/_12ssp"
         app:icon="@drawable/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/primaryDarkColor"
+        app:layout_constraintBottom_toBottomOf="@+id/addCategory"
+        app:layout_constraintEnd_toEndOf="@+id/addCategory"
+        app:layout_constraintStart_toStartOf="@+id/addCategory"
+        app:layout_constraintTop_toTopOf="@+id/addCategory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

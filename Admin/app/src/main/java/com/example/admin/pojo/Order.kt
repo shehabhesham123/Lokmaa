@@ -4,7 +4,7 @@ import com.example.admin.utils.OrderState
 import kotlin.properties.Delegates
 
 /** only one constructor because this is admin app, it receives orders only*/
-open class Order{
+open class Order {
     var id by Delegates.notNull<String>()     // identifier of order obj
         private set
     var client by Delegates.notNull<Client>()
@@ -15,8 +15,8 @@ open class Order{
         private set
     var items by Delegates.notNull<MutableList<OrderItem>>()
         private set
-    var state: Int = OrderState.ACCEPTED
-        protected set
+    var state: Int = OrderState.PREPARE
+
 
     /**
      * this constructor is used to receive on it data of order obj stored in database

@@ -15,6 +15,7 @@
         android:textColor="@color/secondaryTextColor"
         android:textSize="@dimen/_14ssp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,14 +24,14 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_marginTop="@dimen/_12sdp"
         android:textColorHint="@color/grey"
         app:boxBackgroundColor="#F8F8F8"
         app:boxCornerRadiusBottomEnd="@dimen/_10sdp"
         app:boxCornerRadiusBottomStart="@dimen/_10sdp"
         app:boxCornerRadiusTopEnd="@dimen/_10sdp"
-        app:hintEnabled="false"
         app:boxCornerRadiusTopStart="@dimen/_10sdp"
+        app:hintEnabled="false"
         app:layout_constraintTop_toBottomOf="@+id/SignUp_tv_SignUp"
         tools:layout_editor_absoluteX="19dp">
 
@@ -50,16 +51,19 @@
             tools:ignore="RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:text="@string/done"
-            android:textColor="@color/secondaryTextColor"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackground"
+        android:text="@string/done"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/cancel"
@@ -67,9 +71,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_18sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackground"
         android:text="@string/cancel"
         android:textColor="@color/secondaryTextColor"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_13ssp"
         app:layout_constraintEnd_toStartOf="@+id/done"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 

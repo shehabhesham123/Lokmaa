@@ -1,62 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardBackgroundColor="@color/primaryTextColor"
+    app:cardUseCompatPadding="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:selectableItemBackground"
+    app:cardCornerRadius="@dimen/_5sdp"
     android:layout_height="wrap_content">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/OneFood_CardView_ContainerFoodImage"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        app:cardCornerRadius="@dimen/_5sdp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/OneFood_ImageView_FoodImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:importantForAccessibility="no"
-            android:scaleType="centerCrop" />
-    </androidx.cardview.widget.CardView>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/OneFood_TextView_FoodName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/secondaryTextColor"
-        android:textSize="@dimen/_12ssp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/OneFood_CardView_ContainerFoodImage"
-        app:layout_constraintTop_toTopOf="@+id/OneFood_CardView_ContainerFoodImage" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/OneFood_CardView_ContainerFoodImage"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/OneFood_CardView_ContainerFoodImage"
-        app:layout_constraintTop_toBottomOf="@+id/OneFood_TextView_FoodName" />
+            <ImageView
+                android:id="@+id/OneFood_ImageView_FoodImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
 
-    <RatingBar
-        android:id="@+id/OneFood_TextView_FoodRating"
-        style="@style/Widget.AppCompat.RatingBar.Small"
-        android:layout_width="@dimen/_15sdp"
-        android:layout_height="@dimen/_15sdp"
-        android:numStars="1"
-        android:progressBackgroundTint="#FFFCE6"
-        android:progressTint="@color/star"
-        android:rating="0.5"
-        android:stepSize="0.1"
-        app:layout_constraintBottom_toBottomOf="@+id/OneFood_CardView_ContainerFoodImage"
-        app:layout_constraintEnd_toEndOf="@+id/OneFood_CardView_ContainerFoodImage"
-        app:layout_constraintStart_toEndOf="@+id/OneFood_CardView_ContainerFoodImage"
-        app:layout_constraintTop_toBottomOf="@+id/OneFood_CardView_ContainerFoodImage" />
+        </androidx.cardview.widget.CardView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/OneFood_TextView_FoodName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="@dimen/_11ssp"
+            app:fontFamily="@font/cairo_black"
+            android:layout_margin="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/OneFood_CardView_ContainerFoodImage"
+            tools:text="Hello" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/OneFood_TextView_FoodRating" />
+
+        <RatingBar
+            android:id="@+id/OneFood_TextView_FoodRating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_17sdp"
+            android:numStars="4"
+            android:progressBackgroundTint="#CACACA"
+            android:progressTint="@color/star"
+            android:rating="2"
+            android:stepSize="1"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/OneFood_TextView_FoodName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
 

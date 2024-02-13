@@ -66,7 +66,7 @@ class Firestore(private val context: Context) {
         onFailure: (msg: String) -> Unit
     ) {
         if (checkConnection(context)) {
-            val documentId = documentId
+            val documentId = documentId()
             firebaseFirestore.document("$collectionPath/$documentId").set(obj)
                 .addOnSuccessListener {
                     onSuccess(documentId)
@@ -110,7 +110,7 @@ class Firestore(private val context: Context) {
             val batch = firebaseFirestore.batch()
             val ids = mutableListOf<String>()
             for (i in objects.indices) {
-                ids.add(documentId)
+                ids.add(documentId())
                 val documentRef = firebaseFirestore.document("$collectionPath/${ids[i]}")
                 batch.set(documentRef, i)
             }
@@ -268,7 +268,7 @@ class Firestore(private val context: Context) {
     }
 
     companion object {
-        val documentId = System.currentTimeMillis().toString()
+        fun documentId() = System.currentTimeMillis().toString()
     }
 
     /**
