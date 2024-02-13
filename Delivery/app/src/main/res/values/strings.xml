@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Delivery</string>
+    <string name="api_key" translatable="false">AIzaSyAYf7SAuH7r-6JjeqC7GhG3M5S0EJdEiyY</string>
+</resources>
