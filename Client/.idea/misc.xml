@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable-/ic_add.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable-v24/bottom_sheet_bg.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable-v24/button_shape.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/bottom_sheet_bg.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/btn_shape.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/button_shape.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_add.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_arrow.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_box.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_filter.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_google.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_heart.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_line.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_list_shape2_unchecked.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_location.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_minus.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_my_location.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_rating_amazing.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_search.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_timer.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/ic_welcome.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/list_shape1.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/drawable/sign.xml" value="0.2125" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/bottom_sheet_layout.xml" value="0.2604166666666667" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/discount_layout.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_all_category.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_all_restaurant.xml" value="0.264" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_cart.xml" value="0.2604166666666667" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_cart2.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_category.xml" value="0.2604166666666667" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_congratulation.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_filter_dialog.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_location.xml" value="0.4" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_menu.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_motivational.xml" value="0.264" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_one_category.xml" value="0.2604166666666667" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_one_restaurant.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_sec_motivational.xml" value="0.264" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_sign_in.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_sign_up.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/fragment_splash.xml" value="0.2604166666666667" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/ic_welcome.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/location_layout.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/one_adding.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/one_cart_item.xml" value="0.2604166666666667" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/one_category_in_all_category_fragment.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/one_food.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/one_food_in_category.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/one_restaurant_shape1.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/one_restaurant_shape2.xml" value="0.27447916666666666" />
+        <entry key="..\:/Android Apps/Apps Code/Lokma3/app/src/main/res/layout/search_layout.xml" value="0.27447916666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

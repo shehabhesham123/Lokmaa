@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/OneFood_CardView_ContainerFoodImage"
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="@dimen/_138sdp"
+        app:cardCornerRadius="@dimen/_15sdp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/OneFood_ImageView_FoodImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/imageContent"
+            android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/OneFood_TextView_FoodName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/OneFood_CardView_ContainerFoodImage"
+        app:layout_constraintTop_toBottomOf="@+id/OneFood_CardView_ContainerFoodImage"
+        tools:text="BBQ Brisket Burger" />
+
+    <TextView
+        android:id="@+id/OneFood_TextView_FoodPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:textColor="@color/primaryColor"
+        android:textSize="@dimen/_11ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/OneFood_TextView_FoodName"
+        app:layout_constraintTop_toBottomOf="@+id/OneFood_TextView_FoodName"
+        tools:text="62.99 $" />
+
+    <RatingBar
+        android:id="@+id/OneFood_TextView_FoodRating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="1"
+        android:progressBackgroundTint="#FFFCE6"
+        android:progressTint="@color/star"
+        android:stepSize="0.1"
+        app:layout_constraintBottom_toBottomOf="@+id/OneFood_TextView_FoodName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/OneFood_TextView_FoodName"
+        app:layout_constraintTop_toBottomOf="@+id/OneFood_CardView_ContainerFoodImage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

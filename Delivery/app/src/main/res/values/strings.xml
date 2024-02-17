@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Delivery</string>
     <string name="api_key" translatable="false">AIzaSyAYf7SAuH7r-6JjeqC7GhG3M5S0EJdEiyY</string>
+    <string name="waiting">Waiting state : You are now waiting for a new order to deliver it to the client</string>
+    <string name="busy">Delivery state : You are now waiting for a new order to deliver it to the customer</string>
+    <string name="welcome">Welcome back 👋</string>
+    <string name="signInInfo">"Sign in your account"</string>
+    <string name="SignIn_Username">Username</string>
+    <string name="SignIn_Password">Password</string>
+    <string name="SignIn">Sign in </string>
+    <string name="forgetPassword">Forget your password ?</string>
+    <string name="SignIn_CreateNewAccount">"Don't have an account? Sign up"</string>
+    <string name="usernameError">Enter your username</string>
+    <string name="passwordError">Enter your password</string>
+    <string name="passwordError2">Your password must be 8 letters at least</string>
+    <string name="SignIn_phone">Phone number</string>
+    <string name="SignUp_bt_Register">Register </string>
+    <string name="SignUp_info">Register your personal data to be one of Lokma\'s delivery staff</string>
+    <string name="signOut">Sign out</string>
+    <string name="orderInfo">Order info.</string>
+    <string name="clientAddress">Client address: %1$s</string>
+    <string name="restaurantAddress">Restaurant address: %1$s</string>
+    <string name="money">The money required: %1$s</string>
+    <string name="delivery">I have delivered the order</string>
+
 </resources>

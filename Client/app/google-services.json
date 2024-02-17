@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "594688533003",
+    "project_id": "fci-project-35697",
+    "storage_bucket": "fci-project-35697.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594688533003:android:02cd34a01c86d11f6a5d0e",
+        "android_client_info": {
+          "package_name": "com.example.lokma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "594688533003-ma5q4buivuca6jf0fecek6u89u4nt34s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0NFsZ6ohJjbOQ6cIbjpYC82C7IxwiBUs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "594688533003-ma5q4buivuca6jf0fecek6u89u4nt34s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

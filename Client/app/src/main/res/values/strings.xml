@@ -1,0 +1,123 @@
+<resources>
+    <string name="app_name">Lokma</string>
+    <string name="Google_Map_Key" translatable="false">AIzaSyAYf7SAuH7r-6JjeqC7GhG3M5S0EJdEiyY</string>
+
+    <!-- Motivational Fragment -->
+    <string name="Continue">Continue</string>
+    <string name="Sign_in">Sign in</string>
+    <string name="sentence2">Order your favorite menu with easy\n on-demand delivery</string>
+    <string name="sentence1">All your\n Favourite foods</string>
+
+    <!-- SecMotivation Fragment-->
+    <string name="sentence3">Get delivery at your\n doorstep</string>
+    <string name="sentence4">Your ready order will be delivered\nquickly by our courier</string>
+    <string name="GetStarted">Get Started</string>
+
+    <!-- SignIn Fragment-->
+    <string name="Email">Email</string>
+    <string name="Your_Email">Your email</string>
+    <string name="Password">Your password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="Login">Login</string>
+    <string name="createAccount">Don\'t have an account?</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="SignInWithGoogle">Sign in with Google</string>
+    <string name="SignInWithApple">Sign in with Apple</string>
+    <string name="OrWith">Or with</string>
+    <string name="WelcomeBack">Welcome Back</string>
+    <string name="sentence5">Sign in to your account</string>
+    <string name="imageContent">Image</string>
+
+    <!-- SignUp Fragment -->
+    <!--    Sign Up Activity -->
+
+    <string name="SignUp_tv">Sign Up</string>
+    <string name="SignUp_tv_text">Create account and choose favorite menu</string>
+    <string name="SignUp_tv_Name">Name </string>
+    <string name="SignUp_et_NameHint">Your name </string>
+    <string name="SignUp_tv_Email">Email </string>
+    <string name="SignUp_et_EmailHint">Your Email </string>
+    <string name="SignUp_tv_Password">Password </string>
+    <string name="SignUp_et_PasswordHint">Your Password </string>
+    <string name="SignUp_bt_Register">Register </string>
+    <string name="SignUp_tv_HaveAccount">Have an account? </string>
+    <string name="SignUp_tv_SignIn">Sign In</string>
+    <string name="SignUp_tv_text2">By clicking Register, you agree to our </string>
+    <string name="SignUp_tv_text3">Terms and Date Policy </string>
+
+    <string name="internetConnection">Internet has been connected</string>
+    <string name="noInternetConnection">No internet connection</string>
+
+    <string name="search">Search on app</string>
+
+    <!-- AllRestaurants Fragment -->
+    <string name="AllRestaurants">All Restaurants</string>
+    <string name="Filter">Filters</string>
+    <!-- -->
+
+    <!-- Restaurant layout -->
+    <string name="RestaurantImage">Restaurant Image</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- -->
+
+    <!--    congratulation Activity-->
+
+
+    <string name="Cong_text">Congratulation!</string>
+    <string name="Cong_text1">your account is complete \n please enjoy the best menu from us</string>
+    <string name="Cong_btn">Get Started</string>
+
+    <!-- Location Fragment -->
+    <string name="back">Back</string>
+    <string name="line">Line</string>
+    <string name="icon">Icon</string>
+    <string name="Office">Office</string>
+    <string name="Others">Others</string>
+    <string name="DetailAddress">Detail Address</string>
+    <string name="Change">Change</string>
+    <string name="SaveAddressAs">Save Address As</string>
+    <string name="Confirmation">Confirmation</string>
+    <!-- -->
+
+    <string name="Location">Location</string>
+    <string name="Home">Home</string>
+    <string name="ok">Ok</string>
+    <string name="permissionSentence">Location Permission denied\nwe need access to location</string>
+    <string name="ops">Ooops!</string>
+
+    <!-- Location layout -->
+    <string name="DeliveryTo">Delivery To</string>
+    <string name="changeLocation">Change Location</string>
+    <!-- -->
+
+    <!-- Discount layout -->
+    <string name="DiscountImage">Discount Image</string>
+    <string name="OrderNow">Order Now</string>
+    <string name="Discount">Discount</string>
+    <!-- -->
+
+    <!-- Home Fragment -->
+    <string name="TopOfWeek">Top of Week</string>
+    <!-- -->
+
+    <!-- Cart Fragment -->
+    <string name="YourOrder">Your Order</string>
+    <string name="TotalPrice">Total Price :</string>
+    <string name="order">Place Order</string>
+    <string name="MyCart">My Cart</string>
+    <!-- -->
+
+    <string name="our_food">Our Food</string>
+    <string name="special_for_you">Special For You</string>
+    <string name="menu_Title">Menu</string>
+
+    <string name="bottom_food_name">Japan Hainanese Sashimi</string>
+    <string name="sauce">Sauce</string>
+    <string name="add_a_topping">Add a Topping?</string>
+    <string name="add_to_cart_text">Add to Cart (</string>
+
+    <string name="Currency">L.E</string>
+
+
+</resources>

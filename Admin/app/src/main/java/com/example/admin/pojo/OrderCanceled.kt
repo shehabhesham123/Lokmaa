@@ -13,6 +13,7 @@ class OrderCanceled : Order {
         order.id,
         order.client,
         order.delivery,
+	order.restaurant,
         order.date,
         order.items
     ) {

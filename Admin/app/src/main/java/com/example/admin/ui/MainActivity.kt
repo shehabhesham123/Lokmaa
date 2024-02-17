@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity(), RestaurantView {
             return Intent(context, MainActivity::class.java)
         }
     }
-
+/*
     private fun test(restaurant: Restaurant) {
         val firestore = Firestore(baseContext)
         val id = Firestore.documentId()
@@ -133,4 +133,6 @@ class MainActivity : AppCompatActivity(), RestaurantView {
         )
         firestore.upload(order, Const.ordersPath(restaurant.id!!), id, {}, {})
     }
+
+ */
 }

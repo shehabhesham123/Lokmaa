@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primaryColor">#2b7b56</color>
+    <color name="primaryLightColor">#5cab83</color>
+    <color name="primaryDarkColor">#004e2d</color>
+    <color name="secondaryColor">#ffffff</color>
+    <color name="secondaryLightColor">#ffffff</color>
+    <color name="secondaryDarkColor">#757575</color>
+    <color name="primaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
+
+
+    <!-- Motivational Fragment-->
+    <color name="motivationalColor">#F8F8F8</color>
+    <color name="secondPointColor">#b9d3c8</color>
+
+
+    <color name="PrimaryBackgroundCloro">#ffffff</color>
+    <color name="SecondryBackgroundCloro">#F3F2F2</color>
+    <color name="ThirdBackgroundCloro">#F8F8F8</color>
+    <color name="SecondryColor">#E6FFF3</color>
+    <color name="ThirdTextColor">#757575</color>
+
+    <color name="noInternetConnectionState">#1B1B1B</color>
+    <color name="internetConnectionState">#4CAF50</color>
+
+    <color name="grey">#B6B4B4</color>
+
+    <!-- Location layout -->
+    <color name="ForegroundOfLocation">#b9d3c8</color>
+
+    <!-- Discount layout -->
+    <color name="DiscountBackground">#ecf2f0</color>
+    <color name="addressBackground">#ecf2f0</color>
+
+    <color name="star">#FFEB3B</color>
+
+    <color name="card_background_plus_subtract">#FBF6F6</color>
+    <color name="button_subtract">#D8D8D8</color>
+    <color name="lineTint">#F3F0F0</color>
+
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Cong"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/PrimaryBackgroundCloro"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/_15sdp">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/SplashFragment_AnimationView"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_200sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SplashFragment_LinearLayout"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/congratulations" />
+
+    <TextView
+        android:id="@+id/Cong_tv_congratulate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/Cong_text"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/_23ssp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Cong_tv_ypurAccounte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:gravity="center"
+        android:text="@string/Cong_text1"
+        android:textColor="@color/ThirdTextColor"
+        android:textSize="15sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Congratulation_Btn_GetStarted"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:text="@string/Cong_btn"
+        android:textAllCaps="false"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/_5sdp" />
+</LinearLayout>

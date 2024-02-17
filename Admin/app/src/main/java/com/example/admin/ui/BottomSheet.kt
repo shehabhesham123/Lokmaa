@@ -37,8 +37,8 @@ class BottomSheet : BottomSheetDialogFragment(), ViewHolder {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mBinding.order.text = getString(R.string.Order, mOrder!!.id)
-        mBinding.client.text = getString(R.string.client, mOrder!!.client.name)
-        mBinding.delivery.text = getString(R.string.delviery, mOrder!!.delivery.name)
+        mBinding.client.text = getString(R.string.client, mOrder!!.client.username)
+        mBinding.delivery.text = getString(R.string.delviery, mOrder!!.delivery.username)
         mBinding.date.text = mOrder!!.date
         mBinding.totalPrice.text = getString(R.string.totalPrice, getTotalPrice().toString())
 

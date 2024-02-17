@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textfield.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/til_menu_search_your_menu"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/search"
+    app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+    app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+    app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+    app:boxCornerRadiusTopStart="@dimen/_8sdp"
+    app:hintTextColor="@color/grey"
+
+    app:startIconDrawable="@drawable/ic_search">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/SearchLayout_TextET_Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionSearch"
+        android:inputType="text" />
+</com.google.android.material.textfield.TextInputLayout>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/_5sdp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/OneCartItem_CardView_ContainerFoodImage"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/OneCartItem_ImageView_FoodImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/imageContent"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/OneCartItem_TextView_FoodName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textStyle="bold"
+            android:textColor="@color/secondaryTextColor"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/OneCartItem_CardView_ContainerFoodImage"
+            app:layout_constraintTop_toTopOf="@+id/OneCartItem_CardView_ContainerFoodImage"
+            tools:text="classic nachos with chicken" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/Unused3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardElevation="0dp"
+            app:cardCornerRadius="@dimen/_5sdp"
+            app:cardBackgroundColor="#fafafa"
+            app:layout_constraintBottom_toBottomOf="@+id/OneCartItem_CardView_ContainerFoodImage"
+            app:layout_constraintStart_toStartOf="@+id/OneCartItem_TextView_FoodName"
+            app:layout_constraintTop_toBottomOf="@+id/OneCartItem_TextView_FoodName">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/OneCartItem_CardView_AddQuantity"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_marginStart="@dimen/_14sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/primaryColor"
+                    app:cardCornerRadius="@dimen/_12sdp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="@dimen/_1sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/OneCartItem_CardView_ReduceQuantity"
+                    app:layout_constraintStart_toEndOf="@+id/OneCartItem_TextView_Quantity"
+                    app:layout_constraintTop_toTopOf="@+id/OneCartItem_CardView_ReduceQuantity"
+                    tools:ignore="TouchTargetSizeCheck">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/imageContent"
+                        android:src="@drawable/ic_add" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/OneCartItem_TextView_Quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_14sdp"
+                    android:textColor="@color/secondaryTextColor"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintBottom_toBottomOf="@+id/OneCartItem_CardView_ReduceQuantity"
+                    app:layout_constraintStart_toEndOf="@+id/OneCartItem_CardView_ReduceQuantity"
+                    app:layout_constraintTop_toTopOf="@+id/OneCartItem_CardView_ReduceQuantity"
+                    tools:text="1" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/OneCartItem_CardView_ReduceQuantity"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#E3E2E2"
+                    app:cardCornerRadius="@dimen/_12sdp"
+                    app:cardElevation="0dp"
+                    app:cardMaxElevation="@dimen/_1sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/imageContent"
+                        android:src="@drawable/ic_minus" />
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/OneCartItem_TextView_Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primaryColor"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="@+id/Unused3"
+            app:layout_constraintStart_toEndOf="@+id/Unused3"
+            app:layout_constraintTop_toTopOf="@+id/Unused3"
+            tools:text="46.99 $" />
+
+        <ImageView
+            android:id="@+id/Unused2"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/ic_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/OneCartItem_CardView_ContainerFoodImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.cardview.widget.CardView>
