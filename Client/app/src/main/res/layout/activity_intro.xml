@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:drawablePadding="@dimen/_5sdp"
+        android:text="@string/app_name"
+        android:textColor="@color/secondaryTextColor"
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.097" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_35sdp"
+        app:layout_constraintBottom_toTopOf="@+id/MotivationalFragment_Button_Continue"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:layout_editor_absoluteX="45dp" />
+
+    <!--
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/MotivationalFragment_Button_Continue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:src="@color/primaryColor"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="@dimen/_2sdp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_8sdp"
+                android:layout_height="@dimen/_8sdp"
+                android:src="@color/secondPointColor"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="@dimen/_2sdp" />
+        </LinearLayout>
+    -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/MotivationalFragment_Button_SignIn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginHorizontal="@dimen/_35sdp"
+        android:layout_marginBottom="@dimen/_25sdp"
+
+        android:text="@string/Sign_in"
+        android:textAllCaps="false"
+        android:textColor="#3F7A41"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        app:backgroundTint="#D7E1D8"
+        app:cornerRadius="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/MotivationalFragment_Button_Continue"
+        app:layout_constraintStart_toStartOf="@+id/MotivationalFragment_Button_Continue" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/MotivationalFragment_Button_Continue"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_marginHorizontal="@dimen/_35sdp"
+        android:text="@string/Continue"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_13ssp"
+        app:backgroundTint="#307a59"
+        app:cornerRadius="@dimen/_10sdp"
+        app:layout_constraintBottom_toTopOf="@+id/MotivationalFragment_Button_SignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
