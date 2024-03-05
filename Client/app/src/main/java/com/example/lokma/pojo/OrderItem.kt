@@ -5,10 +5,10 @@ import kotlin.properties.Delegates
 class OrderItem {
     var meal by Delegates.notNull<Meal>()
         private set
-    var quantity by Delegates.notNull<Int>()
+    var quantity = 1
 
     var type by Delegates.notNull<Meal.Type>()
-        private set
+
 
     /**
      * this constructor is used to create new orderItem
@@ -18,6 +18,12 @@ class OrderItem {
         this.quantity = quantity
         this.type = type
     }
+
+    constructor(meal: Meal, type: Meal.Type) {
+        this.meal = meal
+        this.type = type
+    }
+
 
     /**
      * this empty constructor is used by firebase when convert data to OrderItem obj

@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lokma.R
+import com.example.lokma.constant.TempStorage
 import com.example.lokma.databinding.FragmentOneCategoryBinding
 import com.example.lokma.pojo.Meal
 import com.squareup.picasso.Picasso
@@ -62,6 +63,9 @@ class OneCategoryFragment : Fragment(), ViewHolder, MealListener {
 
     override fun onClickFood(meal: Meal) {
         // show meal
+        TempStorage.instance().meal = meal
+        val bottomSheet = BottomSheetFragment()
+        bottomSheet.show(parentFragmentManager,null)
     }
 
 }

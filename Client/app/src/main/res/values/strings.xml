@@ -115,13 +115,14 @@
     <string name="bottom_food_name">Japan Hainanese Sashimi</string>
     <string name="sauce">Sauce</string>
     <string name="add_a_topping">Add a Topping?</string>
-    <string name="add_to_cart_text">Add to Cart (</string>
+    <string name="add_to_cart_text">Add to Cart (%1$s L.E)</string>
 
     <string name="Currency">L.E</string>
     <string name="username">Username</string>
     <string name="phone">Phone number</string>
     <string name="restaurant">Restaurant</string>
-    <string name="price">%1$s EGP</string>
-
+    <string name="price">%1$s L.E</string>
+    <string name="sizes">Sizes</string>
+    <string name="size_price">"%1$s  size  -> %2$s L.E"</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.example.lokma.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -13,7 +14,7 @@ import com.example.lokma.pojo.Menu
 import com.example.lokma.pojo.Restaurant
 import com.google.android.material.tabs.TabLayoutMediator
 
-class OneRestaurantActivity : AppCompatActivity() {
+class OneRestaurantActivity : AppCompatActivity() ,OrderItemAdding{
     private lateinit var mBinding: ActivityOneRestaurantBinding
     private lateinit var mRestaurant: Restaurant
     private lateinit var mMenu: Menu
@@ -51,6 +52,11 @@ class OneRestaurantActivity : AppCompatActivity() {
             return Intent(context, OneRestaurantActivity::class.java)
         }
     }
+
+    override fun onAddOrderItem() {
+        val orderItem = TempStorage.instance().orderItem
+        Toast.makeText(baseContext, "${orderItem?.meal?.name} is added to cart", Toast.LENGTH_SHORT).show()
+    }
 }
 
 class ViewPagerAdapter(
@@ -65,4 +71,8 @@ class ViewPagerAdapter(
         return fragments[position]
     }
 
+}
+
+interface OrderItemAdding{
+    fun onAddOrderItem()
 }
