@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,7 @@ class RestaurantsActivity : AppCompatActivity(), RestaurantListener, ViewHolder,
         super.onCreate(savedInstanceState)
         mBinding = ActivityRestaurantsBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
+Log.i("shehab","All Res on create")
         getRestaurantsData()
         restaurantsShapesRadioButton()
         search()
@@ -148,7 +149,7 @@ class VH(viewItem: View, private val listener: ResListener) : ViewHolder2(viewIt
     private val mRating =
         viewItem.findViewById<TextView>(R.id.OneRestaurant_TextView_RestaurantRating)
 
-    override fun bind(item: Any) {
+    override fun bind(item: Any,position:Int) {
         val restaurant = item as Restaurant
         Picasso.get().load(restaurant.logo).into(logo)
         name.text = restaurant.name

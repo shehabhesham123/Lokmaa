@@ -78,7 +78,7 @@ class IntroActivity : AppCompatActivity(), ViewHolder {
         private val title = viewItem.findViewById<TextView>(R.id.title)
         private val message = viewItem.findViewById<TextView>(R.id.message)
 
-        override fun bind(item: Any) {
+        override fun bind(item: Any,position:Int) {
             val intro = item as Intro
             putImages(intro)
             title.text = intro.title

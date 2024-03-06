@@ -20,12 +20,12 @@ class Adapter2(
     }
 
     override fun onBindViewHolder(holder: ViewHolder2, position: Int) {
-        items[position]?.let { holder.bind(it) }
+        items[position]?.let { holder.bind(it, position) }
     }
 }
 
 abstract class ViewHolder2(viewItem: View) : ViewHolder(viewItem) {
-    abstract fun bind(item: Any)
+    abstract fun bind(item: Any, position: Int)
 }
 
 interface ViewHolder {

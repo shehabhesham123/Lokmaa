@@ -24,7 +24,10 @@ class OneCategoryFragment : Fragment(), ViewHolder, MealListener {
         super.onCreate(savedInstanceState)
 
         arguments?.run {
-            meals = getSerializable(PARAM1) as? MutableList<*> as MutableList<Meal>
+            val categoryName = getString(PARAM1)
+            for (i in TempStorage.instance().currentRestaurant!!.menu!!.categories){
+                if (i.name == categoryName) meals = i.meals
+            }
         }
 
     }
@@ -47,9 +50,9 @@ class OneCategoryFragment : Fragment(), ViewHolder, MealListener {
 
     companion object {
         private const val PARAM1 = "param1"
-        fun instance(meals: MutableList<Meal>): OneCategoryFragment {
+        fun instance(categoryName:String): OneCategoryFragment {
             val bundle = Bundle()
-            bundle.putSerializable(PARAM1, meals as Serializable)
+            bundle.putString(PARAM1, categoryName )
             val fragment = OneCategoryFragment()
             fragment.arguments = bundle
             return fragment
@@ -75,7 +78,7 @@ class MealHolder(viewItem: View, private val listener: MealListener) : ViewHolde
     private val name = itemView.findViewById<TextView>(R.id.OneFood_TextView_FoodName)
     private val price = itemView.findViewById<TextView>(R.id.OneFood_TextView_FoodPrice)
     private val rating = itemView.findViewById<RatingBar>(R.id.OneFood_TextView_FoodRating)
-    override fun bind(item: Any) {
+    override fun bind(item: Any,position:Int) {
         val meal = item as Meal
         name.text = meal.name
         price.text = itemView.resources.getString(R.string.price, meal.types[0].price.toString())

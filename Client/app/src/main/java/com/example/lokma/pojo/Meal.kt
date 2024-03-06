@@ -4,7 +4,7 @@ import com.example.lokma.constant.Rating
 import java.io.Serializable
 import kotlin.properties.Delegates
 
-class Meal : Addition<Meal.Type>, Serializable {
+class Meal : Addition<Meal.Type> {
     var id: String? = null     // identifier of meal obj
         /**
         When can a value be assigned to id ?

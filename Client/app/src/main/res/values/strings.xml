@@ -103,7 +103,7 @@
 
     <!-- Cart Fragment -->
     <string name="YourOrder">Your Order</string>
-    <string name="TotalPrice">Total Price :</string>
+    <string name="TotalPrice">Total Price : %1$s L.E</string>
     <string name="order">Place Order</string>
     <string name="MyCart">My Cart</string>
     <!-- -->
