@@ -2,6 +2,8 @@
 
 Welcome to Lokma, your ultimate solution for quick and convenient food ordering from a variety of restaurants. Lokma connects customers, restaurants, and dedicated delivery workers seamlessly, ensuring a delightful experience for all users. With its user-friendly design and visually appealing interface, Lokma makes choosing a favorite restaurant and ordering the perfect meal a breeze.
 
+![Screenshot 1](C:\Users\Electronica Care\Desktop)
+
 ## Key Features
 
 - **Customer Interface:** Effortlessly navigate through a diverse range of restaurants, choose your favorite dishes, and place orders with ease. Lokma offers a visually appealing design for an enjoyable user experience.
