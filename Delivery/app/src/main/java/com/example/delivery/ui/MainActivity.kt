@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat
 import com.example.delivery.Alarm
 import com.example.delivery.R
 import com.example.delivery.backend.firebase.Firestore
+import com.example.delivery.backend.firebase.NormalAuth
 import com.example.delivery.databinding.ActivityMainBinding
 import com.example.delivery.pojo.Address
 import com.example.delivery.pojo.Admin
@@ -238,11 +239,11 @@ class MainActivity : AppCompatActivity(), DeliveryListener {
             }
 
             R.id.signOut -> {
-                /*val auth = NormalAuth(baseContext)
+                val auth = NormalAuth(baseContext)
                 auth.signOut()
                 startActivity(SignInActivity.instanceWithClearStack(baseContext))
-                finish()*/
-                test()
+                finish()
+
             }
         }
         return super.onOptionsItemSelected(item)

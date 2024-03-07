@@ -3,6 +3,7 @@ package com.example.lokma.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lokma.constant.Const
@@ -30,6 +31,8 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         mBinding.SignUpFragmentButtonRegister.setOnClickListener {
+            mBinding.SignUpFragmentButtonRegister.visibility = View.GONE
+            mBinding.SignUpFragmentAnimationView.visibility = View.VISIBLE
             register()
         }
     }
@@ -39,6 +42,8 @@ class SignUpActivity : AppCompatActivity() {
         client?.run {
             mAuth.signUp("$username@lokma.com", password!!, {
                 mFirestore.upload(this, Const.CLIENT_PATH, {
+                    mBinding.SignUpFragmentButtonRegister.visibility = View.VISIBLE
+                    mBinding.SignUpFragmentAnimationView.visibility = View.GONE
                     val intent = CongratulationActivity.instance(baseContext)
                     startActivity(intent)
                     finish()

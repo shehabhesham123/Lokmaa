@@ -19,6 +19,7 @@ import com.example.lokma.pojo.Cart
 import com.example.lokma.pojo.Menu
 import com.example.lokma.pojo.Restaurant
 import com.google.android.material.tabs.TabLayoutMediator
+import java.util.Locale
 
 class OneRestaurantActivity : AppCompatActivity(), OrderItemAdding {
     private lateinit var mBinding: ActivityOneRestaurantBinding
@@ -66,7 +67,9 @@ class OneRestaurantActivity : AppCompatActivity(), OrderItemAdding {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val categories = mMenu.categories
                 for ((idx,category) in categories.withIndex()){
-                    if (category.name == s.toString()){
+                    val name = category.name.lowercase(Locale.ROOT)
+                    val s2 = s.toString().lowercase(Locale.ROOT)
+                    if (name.contains(s2)){
                         mBinding.vpMenu.currentItem = idx
                         return
                     }

@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/size"
-            android:inputType="text"
+            android:inputType="text|textCapWords"
             android:paddingStart="@dimen/_15sdp"
             android:textColor="@color/secondaryTextColor"
             android:textColorHint="@color/grey"

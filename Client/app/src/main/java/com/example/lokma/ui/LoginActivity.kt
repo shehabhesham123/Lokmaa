@@ -3,6 +3,7 @@ package com.example.lokma.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lokma.constant.TempStorage
 import com.example.lokma.databinding.ActivityLoginBinding
@@ -34,6 +35,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         mBinding.SignInFragmentButtonLogin.setOnClickListener {
+            mBinding.SignInFragmentButtonLogin.visibility = View.GONE
+            mBinding.SignInFragmentAnimationView.visibility = View.VISIBLE
             login()
         }
     }
@@ -44,6 +47,8 @@ class LoginActivity : AppCompatActivity() {
             // login
             mAuth.signIn("$username@lokma.com", password!!, {
                 val intent = RestaurantsActivity.instance(baseContext)
+                mBinding.SignInFragmentButtonLogin.visibility = View.VISIBLE
+                mBinding.SignInFragmentAnimationView.visibility = View.GONE
                 TempStorage.instance().client = Client(username, "")
                 startActivity(intent)
                 finish()

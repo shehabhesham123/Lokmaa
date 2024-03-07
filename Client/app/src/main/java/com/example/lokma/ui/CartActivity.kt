@@ -17,6 +17,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lokma.R
 import com.example.lokma.constant.Const
+import com.example.lokma.constant.OrderState
 import com.example.lokma.constant.TempStorage
 import com.example.lokma.databinding.ActivityCartBinding
 import com.example.lokma.network.firebase.Firestore
@@ -100,6 +101,7 @@ class CartActivity : AppCompatActivity(), ViewHolder, QuantityChanging, Delivery
         val order = Order(id, client, delivery, restaurant, date, mCart.items)
         val firestore = Firestore(baseContext)
         firestore.upload(order,Const.MY_ODERDER_PATH(delivery.username),id,{
+            order.state = OrderState.PREPARE
             firestore.upload(order,Const.ordersPath(restaurant.id!!),id,{
                 Toast.makeText(baseContext, "Done", Toast.LENGTH_SHORT).show()
                 TempStorage.instance().cart!!.items.clear()

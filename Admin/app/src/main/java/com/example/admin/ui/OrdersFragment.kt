@@ -161,7 +161,8 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
                 if (it.size != orders.size)
                     for (i in it) {
                         if (i.whatHappened == DocumentChange.Type.ADDED) {
-                            orders.add(i.obj.toObject(Order::class.java))
+                            val order = i.obj.toObject(Order::class.java)
+                            orders.add(order)
                             mBinding.recyclerView.adapter?.notifyItemInserted(orders.size - 1)
                             createAlerter()
                             mBinding.no.visibility = View.GONE

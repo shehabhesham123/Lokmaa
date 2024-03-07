@@ -24,8 +24,6 @@ class LocationActivity : AppCompatActivity() {
     private lateinit var mGoogleMap: GoogleMap
     private lateinit var register: ActivityResultLauncher<String>
     private var client = TempStorage.instance().client!!
-    private var isAllow = true
-    private var cnt = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,28 +36,11 @@ class LocationActivity : AppCompatActivity() {
 
         mGoogleMap = GoogleMap()
         register = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-            isAllow = isAllow.and(it)
-            cnt++
-            updateUI()
+            checkLocationPermission()
         }
 
 
-        if (ActivityCompat.checkSelfPermission(
-                baseContext,
-                android.Manifest.permission.ACCESS_COARSE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(
-                baseContext,
-                android.Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            mBinding.LocationFragmentConstraintLayoutRequirePermission.visibility = View.GONE
-            mBinding.LocationFragmentConstraintLayoutLocationLayout.visibility = View.VISIBLE
-            confirmGoogleMap()
-        } else {
-            mBinding.LocationFragmentConstraintLayoutRequirePermission.visibility = View.VISIBLE
-            mBinding.LocationFragmentConstraintLayoutLocationLayout.visibility = View.GONE
-        }
+        checkLocationPermission()
 
         mBinding.LocationFragmentButtonRequirePermission.setOnClickListener {
             register.launch(android.Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -88,20 +69,47 @@ class LocationActivity : AppCompatActivity() {
         s.quit()
     }
 
+    private fun checkLocationPermission(){
+        if (ActivityCompat.checkSelfPermission(
+                baseContext,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                baseContext,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            mBinding.LocationFragmentConstraintLayoutRequirePermission.visibility = View.GONE
+            mBinding.LocationFragmentConstraintLayoutLocationLayout.visibility = View.VISIBLE
+            confirmGoogleMap()
+        } else {
+            mBinding.LocationFragmentConstraintLayoutRequirePermission.visibility = View.VISIBLE
+            mBinding.LocationFragmentConstraintLayoutLocationLayout.visibility = View.GONE
+        }
+    }
+
     private fun putLocation() {
         client.address?.let {
-            putLocationData(it.address)
+            putLocationData(it)
             return
         }
         val defaultLocation = Location()
         Address.getAddress(baseContext, defaultLocation) {
-            putLocationData(it.address)
+            putLocationData(it)
         }
+
     }
 
-    private fun putLocationData(address: String) {
+    private fun putLocationData(address: Address) {
         Handler(Looper.getMainLooper()).post {
-            mBinding.LocationFragmentTextViewLongAddress.text = address
+            mBinding.LocationFragmentTextViewLongAddress.text = address.address
+            mGoogleMap.addMarker(
+                GoogleMap.Marker(
+                    LatLng(address.latitude, address.longitude),
+                    null,
+                    null
+                )
+            )
         }
     }
 
@@ -128,13 +136,6 @@ class LocationActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateUI() {
-        if (cnt == 2 && isAllow) {
-            mBinding.LocationFragmentConstraintLayoutRequirePermission.visibility = View.GONE
-            mBinding.LocationFragmentConstraintLayoutLocationLayout.visibility = View.VISIBLE
-            confirmGoogleMap()
-        }
-    }
 
     private fun confirmGoogleMap() {
         supportFragmentManager.beginTransaction()
