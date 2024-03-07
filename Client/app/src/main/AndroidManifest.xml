@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,12 +17,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Lokma"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.CongratulationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LocationActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.CartActivity" />
         <activity
             android:name=".ui.CartActivity"
             android:exported="false"
-            android:launchMode="standard"
             android:parentActivityName=".ui.OneRestaurantActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/Google_Map_Key" />
+
         <activity
             android:name=".ui.OneRestaurantActivity"
             android:exported="false"
@@ -25,8 +40,8 @@
             android:parentActivityName=".ui.RestaurantsActivity" />
         <activity
             android:name=".ui.RestaurantsActivity"
-            android:launchMode="standard"
-            android:exported="false" />
+            android:exported="false"
+            android:launchMode="standard" />
         <activity
             android:name=".ui.SignUpActivity"
             android:exported="false" />

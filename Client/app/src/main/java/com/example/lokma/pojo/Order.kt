@@ -17,7 +17,7 @@ open class Order {
         private set
     var items by Delegates.notNull<MutableList<OrderItem>>()
         private set
-    var state: Int = OrderState.PREPARE
+    var state: Int = OrderState.NOTIFICATION_NOT_RECEIVE_TO_DELIVERY
 
 
     /**

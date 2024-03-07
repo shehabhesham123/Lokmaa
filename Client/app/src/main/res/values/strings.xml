@@ -123,6 +123,14 @@
     <string name="restaurant">Restaurant</string>
     <string name="price">%1$s L.E</string>
     <string name="sizes">Sizes</string>
-    <string name="size_price">"%1$s  size  -> %2$s L.E"</string>
+    <string name="size_price">"%1$s  size \t\t %2$s L.E"</string>
+    <string name="title_activity_cart">CartActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="distance">%1$s Km</string>
+
 
 </resources>

@@ -46,6 +46,7 @@
         android:layout_marginEnd="@dimen/_5sdp"
         android:textColor="@color/secondaryTextColor"
         android:textSize="@dimen/_12ssp"
+        android:maxLines="1"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/OneFood_CardView_ContainerFoodImage"
         app:layout_constraintTop_toBottomOf="@+id/OneFood_CardView_ContainerFoodImage"

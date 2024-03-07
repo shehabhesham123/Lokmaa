@@ -4,6 +4,7 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.LocationServices
 import kotlin.math.atan2
@@ -41,6 +42,7 @@ open class Location {
                  */
         fun getCurrentLocation(context: Context, onSuccess: (location: Location) -> Unit) {
             val fusedLocationClient = LocationServices.getFusedLocationProviderClient(context)
+            Log.i("shehab","${permissionIsGranted(context)}")
             if (permissionIsGranted(context)) {
                 fusedLocationClient.lastLocation
                     .addOnSuccessListener {

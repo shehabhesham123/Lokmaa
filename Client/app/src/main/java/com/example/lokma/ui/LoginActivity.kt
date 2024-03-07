@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lokma.constant.TempStorage
 import com.example.lokma.databinding.ActivityLoginBinding
 import com.example.lokma.network.firebase.NormalAuth
 import com.example.lokma.pojo.Client
@@ -20,6 +21,8 @@ class LoginActivity : AppCompatActivity() {
         val currentUser = mAuth.getCurrentUser()
         currentUser?.let {
             val intent = RestaurantsActivity.instance(baseContext)
+            TempStorage.instance().client = Client(it, "")
+
             startActivity(intent)
             finish()
         }
@@ -41,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
             // login
             mAuth.signIn("$username@lokma.com", password!!, {
                 val intent = RestaurantsActivity.instance(baseContext)
+                TempStorage.instance().client = Client(username, "")
                 startActivity(intent)
                 finish()
             }, {})
@@ -63,7 +67,9 @@ class LoginActivity : AppCompatActivity() {
 
     companion object {
         fun instance(context: Context): Intent {
-            return Intent(context, LoginActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            return intent
         }
     }
 }

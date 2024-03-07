@@ -39,7 +39,7 @@ class SignUpActivity : AppCompatActivity() {
         client?.run {
             mAuth.signUp("$username@lokma.com", password!!, {
                 mFirestore.upload(this, Const.CLIENT_PATH, {
-                    val intent = RestaurantsActivity.instance(baseContext)
+                    val intent = CongratulationActivity.instance(baseContext)
                     startActivity(intent)
                     finish()
                 }, {

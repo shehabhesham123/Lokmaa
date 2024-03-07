@@ -51,16 +51,18 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
             mBinding.bottomTvTotalPrice.text =
                 resources.getString(R.string.price, orderItem!!.type.price.toString())
 
+            var firstRadioButton : RadioButton? = null
             for ((idx, type) in types.withIndex()) {
                 val radioButton = RadioButton(requireContext())
-                //if (idx == 0) radioButton.isChecked = true
+                if (idx == 0) firstRadioButton = radioButton
                 radioButton.textSize = 19f
                 radioButton.buttonTintList = resources.getColorStateList(R.color.primaryColor, null)
                 radioButton.text =
                     resources.getString(R.string.size_price, type.name, type.price.toString())
                 mBinding.sizes.addView(radioButton)
             }
-            mBinding.sizes.check(3)
+
+            firstRadioButton?.isChecked = true
 
             mBinding.bottomBtnAddToCart.text =
                 resources.getString(R.string.add_to_cart_text, orderItem!!.type.price.toString())

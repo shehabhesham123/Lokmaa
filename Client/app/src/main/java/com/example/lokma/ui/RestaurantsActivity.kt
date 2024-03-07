@@ -30,10 +30,9 @@ class RestaurantsActivity : AppCompatActivity(), RestaurantListener, ViewHolder,
         super.onCreate(savedInstanceState)
         mBinding = ActivityRestaurantsBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-Log.i("shehab","All Res on create")
+
         getRestaurantsData()
         restaurantsShapesRadioButton()
-        search()
     }
 
     private fun search() {
@@ -75,6 +74,8 @@ Log.i("shehab","All Res on create")
         this.restaurants = TempStorage.instance().restaurants
         Toast.makeText(baseContext, "${restaurants.size}", Toast.LENGTH_SHORT).show()
         updateUI(restaurants)
+
+        search()
     }
 
     private fun updateUI(restaurants: MutableList<Restaurant>) {

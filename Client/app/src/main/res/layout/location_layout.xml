@@ -75,7 +75,7 @@
                 android:layout_marginStart="@dimen/_5sdp"
                 android:textColor="@color/primaryTextColor"
                 android:textSize="@dimen/_13ssp"
-                android:text="HOME"
+                android:text="@string/Home"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/Unused"
                 app:layout_constraintStart_toEndOf="@+id/Unused"
@@ -114,7 +114,7 @@
                     android:layout_marginBottom="@dimen/_4sdp"
                     android:textColor="@color/secondaryTextColor"
                     android:textSize="@dimen/_11ssp"
-                    tools:text="2.4 km" />
+                    android:text="@string/distance" />
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

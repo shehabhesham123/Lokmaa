@@ -2,6 +2,7 @@ package com.example.lokma.pojo
 
 import android.content.Context
 import android.os.Handler
+import android.util.Log
 import com.example.lokma.network.Network
 import com.example.lokma.ui.SeparatedThread
 import org.json.JSONObject
@@ -51,6 +52,25 @@ class Address : Location {
                     )
                     separatedThread.quit()
                 }
+            }
+        }
+
+        fun getAddress(context: Context,location: Location, onSuccess: (address: Address) -> Unit){
+            val separatedThread = SeparatedThread()
+            separatedThread.start()
+            Handler(separatedThread.looper).post {
+                val addressJson =
+                    geocodingJson(context, Location(location.latitude, location.longitude))
+                val address =
+                    addressJson.getJSONArray("results").getJSONObject(0).getString("formatted")
+                onSuccess(
+                    Address(
+                        location.latitude,
+                        location.longitude,
+                        address
+                    )
+                )
+                separatedThread.quit()
             }
         }
 

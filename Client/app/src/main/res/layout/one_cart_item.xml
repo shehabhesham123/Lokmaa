@@ -67,15 +67,12 @@
                     android:layout_marginStart="@dimen/_14sdp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     app:cardBackgroundColor="@color/primaryColor"
                     app:cardCornerRadius="@dimen/_12sdp"
-                    app:cardElevation="0dp"
-                    app:cardMaxElevation="@dimen/_1sdp"
+                    app:cardMaxElevation="0dp"
                     app:layout_constraintBottom_toBottomOf="@+id/OneCartItem_CardView_ReduceQuantity"
                     app:layout_constraintStart_toEndOf="@+id/OneCartItem_TextView_Quantity"
-                    app:layout_constraintTop_toTopOf="@+id/OneCartItem_CardView_ReduceQuantity"
-                    tools:ignore="TouchTargetSizeCheck">
+                    app:layout_constraintTop_toTopOf="@+id/OneCartItem_CardView_ReduceQuantity">
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -103,11 +100,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?attr/selectableItemBackground"
                     app:cardBackgroundColor="#E3E2E2"
                     app:cardCornerRadius="@dimen/_12sdp"
-                    app:cardElevation="0dp"
-                    app:cardMaxElevation="@dimen/_1sdp"
+                    app:cardMaxElevation="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
