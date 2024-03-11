@@ -17,7 +17,7 @@ class Dialog(private val listener: DeliveryListener) : DialogFragment() {
             mBinding.clientAddress.text =
                 getString(R.string.clientAddress, client.address.address)
             mBinding.RestaurantAddress.text =
-                getString(R.string.clientAddress, restaurant.address.address)
+                getString(R.string.restaurantAddress, restaurant.address.address)
             mBinding.price.text =
                 getString(R.string.clientAddress, getPrice(order.items).toString())
         }

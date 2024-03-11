@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity(), DeliveryListener {
     override fun onStart() {
         super.onStart()
         Alarm.cancel(baseContext)
+        check()
     }
 
     override fun onResume() {
@@ -90,17 +91,17 @@ class MainActivity : AppCompatActivity(), DeliveryListener {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             permissionRegistration.launch(android.Manifest.permission.POST_NOTIFICATIONS)
         }
-        check()
     }
 
     override fun onStop() {
         super.onStop()
         Alarm.startAlarm(baseContext, mDelivery!!.username)
+        listenerRegistration?.remove()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        listenerRegistration?.remove()
+
     }
 
     private fun requirePermissions() {

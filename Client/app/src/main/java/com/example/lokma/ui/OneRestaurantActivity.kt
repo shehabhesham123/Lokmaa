@@ -33,7 +33,9 @@ class OneRestaurantActivity : AppCompatActivity(), OrderItemAdding {
 
         mRestaurant = TempStorage.instance().currentRestaurant!!
         mMenu = mRestaurant.menu!!
-        TempStorage.instance().cart = Cart(mRestaurant.id!!, mutableListOf())
+        Log.i("shehab hesham","one create")
+        if (TempStorage.instance().cart == null)
+            TempStorage.instance().cart = Cart(mRestaurant.id!!, mutableListOf())
 
         setSupportActionBar(mBinding.toolbar)
         supportActionBar?.title = ""
@@ -56,8 +58,8 @@ class OneRestaurantActivity : AppCompatActivity(), OrderItemAdding {
 
     }
 
-    override fun onRestart() {
-        super.onRestart()
+    override fun onResume() {
+        super.onResume()
         cartUIUpdate()
     }
 
@@ -104,6 +106,7 @@ class OneRestaurantActivity : AppCompatActivity(), OrderItemAdding {
 
     private fun cartUIUpdate() {
         val cart = TempStorage.instance().cart!!
+        Log.i("shehab hesham" , "one Res  ${TempStorage.instance().cart!!.items.size}")
         if (cart.items.isNotEmpty()) {
             mBinding.CustomCart.cartNumCardView.visibility = View.VISIBLE
             mBinding.CustomCart.cartNum.text = cart.items.size.toString()

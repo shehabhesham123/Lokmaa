@@ -20,6 +20,7 @@ import com.example.lokma.constant.TempStorage
 import com.example.lokma.databinding.ActivityRestaurantsBinding
 import com.example.lokma.pojo.Restaurant
 import com.squareup.picasso.Picasso
+import java.util.Locale
 
 class RestaurantsActivity : AppCompatActivity(), RestaurantListener, ViewHolder, ResListener {
     private lateinit var mBinding: ActivityRestaurantsBinding
@@ -39,10 +40,10 @@ class RestaurantsActivity : AppCompatActivity(), RestaurantListener, ViewHolder,
         mBinding.Search.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val res = s.toString()
+                val res = s.toString().lowercase(Locale.ROOT)
                 val result = mutableListOf<Restaurant>()
                 for (i in restaurants) {
-                    val isFound = i.name.contains(res)
+                    val isFound = i.name.lowercase(Locale.ROOT).contains(res)
                     if (isFound) {
                         result.add(i)
                     }

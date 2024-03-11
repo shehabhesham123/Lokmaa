@@ -35,9 +35,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         mBinding.SignInFragmentButtonLogin.setOnClickListener {
-            mBinding.SignInFragmentButtonLogin.visibility = View.GONE
-            mBinding.SignInFragmentAnimationView.visibility = View.VISIBLE
-            login()
+           login()
         }
     }
 
@@ -45,6 +43,9 @@ class LoginActivity : AppCompatActivity() {
         val client = getClient()
         client?.run {
             // login
+            mBinding.SignInFragmentButtonLogin.visibility = View.GONE
+            mBinding.SignInFragmentAnimationView.visibility = View.VISIBLE
+
             mAuth.signIn("$username@lokma.com", password!!, {
                 val intent = RestaurantsActivity.instance(baseContext)
                 mBinding.SignInFragmentButtonLogin.visibility = View.VISIBLE
@@ -52,7 +53,11 @@ class LoginActivity : AppCompatActivity() {
                 TempStorage.instance().client = Client(username, "")
                 startActivity(intent)
                 finish()
-            }, {})
+            }, {
+                mBinding.SignInFragmentButtonLogin.visibility = View.VISIBLE
+                mBinding.SignInFragmentAnimationView.visibility = View.GONE
+
+            })
         }
     }
 

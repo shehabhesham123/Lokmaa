@@ -150,7 +150,6 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
                         mBinding.recyclerView.adapter?.notifyItemChanged(position)
                     }, {})
                 }
-
             }
         }).attachToRecyclerView(mBinding.recyclerView)
     }
@@ -158,16 +157,21 @@ class OrdersFragment : Fragment(), OrderView, OrderListener, ViewHolder {
     private fun addSnapShotToOrders() {
         mRestaurant?.run {
             mSnapshot = mFirestore.addSnapshot(Const.ordersPath(id!!), {
-                if (it.size != orders.size)
-                    for (i in it) {
-                        if (i.whatHappened == DocumentChange.Type.ADDED) {
-                            val order = i.obj.toObject(Order::class.java)
-                            orders.add(order)
-                            mBinding.recyclerView.adapter?.notifyItemInserted(orders.size - 1)
-                            createAlerter()
-                            mBinding.no.visibility = View.GONE
-                        }
+                for (i in it) {
+                    val order = i.obj.toObject(Order::class.java)
+                    if (i.whatHappened == DocumentChange.Type.ADDED && order.state == OrderState.NOTIFICATION_NOT_RECEIVE_TO_DELIVERY) {
+                        order.state = OrderState.PREPARE
+                        orders.add(order)
+                        mFirestore.update(
+                            order,
+                            "${Const.ordersPath(mRestaurant?.id!!)}/${order.id}",
+                            {
+                                createAlerter()
+                                mBinding.recyclerView.adapter?.notifyItemInserted(orders.size - 1)
+                                mBinding.no.visibility = View.GONE
+                            }, {})
                     }
+                }
             }, {
 
             })
@@ -213,9 +217,9 @@ class OrderHolder(itemView: View, private val listener: OrderListener) : ViewHol
 
     private fun updateUI(state: Int) {
         when (state) {
-            OrderState.PREPARE -> {
-                background.setBackgroundResource(R.drawable.l3)
-                mTextView.setTextColor(itemView.resources.getColor(R.color.primaryColor, null))
+            OrderState.CANCELED -> {
+                background.setBackgroundResource(R.color.red)
+                mTextView.setTextColor(itemView.resources.getColor(R.color.primaryTextColor, null))
             }
 
             OrderState.ACCEPTED -> {
@@ -224,8 +228,8 @@ class OrderHolder(itemView: View, private val listener: OrderListener) : ViewHol
             }
 
             else -> {
-                background.setBackgroundResource(R.color.red)
-                mTextView.setTextColor(itemView.resources.getColor(R.color.primaryTextColor, null))
+                background.setBackgroundResource(R.drawable.l3)
+                mTextView.setTextColor(itemView.resources.getColor(R.color.primaryColor, null))
             }
         }
     }

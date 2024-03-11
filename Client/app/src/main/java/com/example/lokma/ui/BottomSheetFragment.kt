@@ -20,6 +20,7 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
     private var meal = TempStorage.instance().meal
     private var orderItem: OrderItem? = null
     private lateinit var listener: OrderItemAdding
+    private var buttons = mutableListOf<RadioButton>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -51,15 +52,18 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
             mBinding.bottomTvTotalPrice.text =
                 resources.getString(R.string.price, orderItem!!.type.price.toString())
 
-            var firstRadioButton : RadioButton? = null
+            var firstRadioButton: RadioButton? = null
+
             for ((idx, type) in types.withIndex()) {
                 val radioButton = RadioButton(requireContext())
+                buttons.add(radioButton)
                 if (idx == 0) firstRadioButton = radioButton
                 radioButton.textSize = 19f
                 radioButton.buttonTintList = resources.getColorStateList(R.color.primaryColor, null)
                 radioButton.text =
                     resources.getString(R.string.size_price, type.name, type.price.toString())
                 mBinding.sizes.addView(radioButton)
+
             }
 
             firstRadioButton?.isChecked = true
@@ -82,9 +86,13 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         mBinding.sizes.setOnCheckedChangeListener { group, checkedId ->
-            val type = meal!!.types[checkedId - 3]
-            orderItem!!.type = type
-            quantityChanged()
+            for ((i, j) in buttons.withIndex()) {
+                if (j.id == checkedId) {
+                    val type = meal!!.types[i]
+                    orderItem!!.type = type
+                    quantityChanged()
+                }
+            }
         }
 
         mBinding.bottomBtnAddToCart.setOnClickListener {

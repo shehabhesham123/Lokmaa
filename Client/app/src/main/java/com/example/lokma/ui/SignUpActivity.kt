@@ -31,8 +31,6 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         mBinding.SignUpFragmentButtonRegister.setOnClickListener {
-            mBinding.SignUpFragmentButtonRegister.visibility = View.GONE
-            mBinding.SignUpFragmentAnimationView.visibility = View.VISIBLE
             register()
         }
     }
@@ -40,6 +38,8 @@ class SignUpActivity : AppCompatActivity() {
     private fun register() {
         val client = getClient()
         client?.run {
+            mBinding.SignUpFragmentButtonRegister.visibility = View.GONE
+            mBinding.SignUpFragmentAnimationView.visibility = View.VISIBLE
             mAuth.signUp("$username@lokma.com", password!!, {
                 mFirestore.upload(this, Const.CLIENT_PATH, {
                     mBinding.SignUpFragmentButtonRegister.visibility = View.VISIBLE
@@ -48,9 +48,13 @@ class SignUpActivity : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }, {
+                    mBinding.SignUpFragmentButtonRegister.visibility = View.VISIBLE
+                    mBinding.SignUpFragmentAnimationView.visibility = View.GONE
                     Toast.makeText(baseContext, it, Toast.LENGTH_SHORT).show()
                 })
             }, {
+                mBinding.SignUpFragmentButtonRegister.visibility = View.VISIBLE
+                mBinding.SignUpFragmentAnimationView.visibility = View.GONE
                 Toast.makeText(baseContext, it, Toast.LENGTH_SHORT).show()
             })
         }
@@ -61,14 +65,16 @@ class SignUpActivity : AppCompatActivity() {
         val password = mBinding.SignUpFragmentInputETPassword.text!!.trim().toString()
         val phoneNumber = mBinding.SignUpFragmentInputETPhone.text!!.trim().toString()
         if (username.isEmpty()) {
+            mBinding.SignUpEtUsername.isErrorEnabled = true
             mBinding.SignUpEtUsername.error = "Enter valid username"
             return null
-        }
-        if (password.isEmpty()) {
+        }else mBinding.SignUpEtUsername.isErrorEnabled = false
+        if (password.isEmpty() || password.length < 8) {
+            mBinding.SignUpEtPassword.isErrorEnabled = true
             mBinding.SignUpEtPassword.error = "Enter valid password"
             return null
-        }
-        if (phoneNumber.isEmpty()) {
+        }else mBinding.SignUpEtPassword.isErrorEnabled = false
+        if (phoneNumber.isEmpty() || phoneNumber.length != 11) {
             mBinding.SignUpEtPhone.error = "Enter valid phone"
             return null
         }

@@ -14,7 +14,6 @@ import com.example.lokma.constant.TempStorage
 import com.example.lokma.databinding.FragmentOneCategoryBinding
 import com.example.lokma.pojo.Meal
 import com.squareup.picasso.Picasso
-import java.io.Serializable
 
 class OneCategoryFragment : Fragment(), ViewHolder, MealListener {
 
@@ -25,9 +24,12 @@ class OneCategoryFragment : Fragment(), ViewHolder, MealListener {
 
         arguments?.run {
             val categoryName = getString(PARAM1)
-            for (i in TempStorage.instance().currentRestaurant!!.menu!!.categories){
-                if (i.name == categoryName) meals = i.meals
+            TempStorage.instance().currentRestaurant?.menu?.categories?.let {
+                for (i in it) {
+                    if (i.name == categoryName) meals = i.meals
+                }
             }
+
         }
 
     }
@@ -50,9 +52,9 @@ class OneCategoryFragment : Fragment(), ViewHolder, MealListener {
 
     companion object {
         private const val PARAM1 = "param1"
-        fun instance(categoryName:String): OneCategoryFragment {
+        fun instance(categoryName: String): OneCategoryFragment {
             val bundle = Bundle()
-            bundle.putString(PARAM1, categoryName )
+            bundle.putString(PARAM1, categoryName)
             val fragment = OneCategoryFragment()
             fragment.arguments = bundle
             return fragment
@@ -68,7 +70,7 @@ class OneCategoryFragment : Fragment(), ViewHolder, MealListener {
         // show meal
         TempStorage.instance().meal = meal
         val bottomSheet = BottomSheetFragment()
-        bottomSheet.show(parentFragmentManager,null)
+        bottomSheet.show(parentFragmentManager, null)
     }
 
 }
@@ -78,7 +80,7 @@ class MealHolder(viewItem: View, private val listener: MealListener) : ViewHolde
     private val name = itemView.findViewById<TextView>(R.id.OneFood_TextView_FoodName)
     private val price = itemView.findViewById<TextView>(R.id.OneFood_TextView_FoodPrice)
     private val rating = itemView.findViewById<RatingBar>(R.id.OneFood_TextView_FoodRating)
-    override fun bind(item: Any,position:Int) {
+    override fun bind(item: Any, position: Int) {
         val meal = item as Meal
         name.text = meal.name
         price.text = itemView.resources.getString(R.string.price, meal.types[0].price.toString())

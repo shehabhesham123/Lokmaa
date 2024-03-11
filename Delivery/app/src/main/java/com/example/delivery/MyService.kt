@@ -30,7 +30,7 @@ class MyService : Service(), OrderView {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
+Log.i("shehab","service")
         mDeliveryUsername = intent?.run {
             this.getStringExtra("username")
         }
@@ -71,7 +71,7 @@ class MyService : Service(), OrderView {
             else NotificationCompat.Builder(baseContext)
 
         notification.setContentTitle("New order")
-            .setSmallIcon(R.drawable.logo)
+            .setSmallIcon(R.drawable.lokma2)
             .setContentText("Go to $restaurantAddress immediately to receive the order")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setVibrate(longArrayOf(0, 1000, 1000, 1000)).setContentIntent(pendingIntent)

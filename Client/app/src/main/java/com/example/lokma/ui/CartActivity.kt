@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,8 +63,11 @@ class CartActivity : AppCompatActivity(), ViewHolder, QuantityChanging, Delivery
 
         mBinding.CartFragmentIncludeLocation.LocationImageViewChangeLocation.setOnClickListener {
             // go to Location Activity
-            val intent = LocationActivity.instance(baseContext)
-            startActivity(intent)
+            Handler(Looper.getMainLooper()).post{
+                val intent = LocationActivity.instance(baseContext)
+                startActivity(intent)
+            }
+
         }
         s.start()
         Handler(s.looper).post {
@@ -101,7 +105,6 @@ class CartActivity : AppCompatActivity(), ViewHolder, QuantityChanging, Delivery
         val order = Order(id, client, delivery, restaurant, date, mCart.items)
         val firestore = Firestore(baseContext)
         firestore.upload(order,Const.MY_ODERDER_PATH(delivery.username),id,{
-            order.state = OrderState.PREPARE
             firestore.upload(order,Const.ordersPath(restaurant.id!!),id,{
                 Toast.makeText(baseContext, "Done", Toast.LENGTH_SHORT).show()
                 TempStorage.instance().cart!!.items.clear()
@@ -215,6 +218,8 @@ class CartActivity : AppCompatActivity(), ViewHolder, QuantityChanging, Delivery
         if (quantity == 0) {
             mCart.items.removeAt(position)
             mBinding.CartFragmentRecyclerViewOrders.adapter?.notifyItemRemoved(position)
+
+            Log.i("shehab hesham"," cart  ${mCart.items.size}  ,  ${TempStorage.instance().cart!!.items.size}")
         }
     }
 

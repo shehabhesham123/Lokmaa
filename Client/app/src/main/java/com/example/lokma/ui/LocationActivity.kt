@@ -56,10 +56,7 @@ class LocationActivity : AppCompatActivity() {
             finish()
         }
 
-        s.start()
-        Handler(s.looper).post {
-            putLocation()
-        }
+
     }
 
     val s = SeparatedThread()
@@ -82,9 +79,14 @@ class LocationActivity : AppCompatActivity() {
             mBinding.LocationFragmentConstraintLayoutRequirePermission.visibility = View.GONE
             mBinding.LocationFragmentConstraintLayoutLocationLayout.visibility = View.VISIBLE
             confirmGoogleMap()
+            s.start()
+            Handler(s.looper).post {
+                putLocation()
+            }
         } else {
             mBinding.LocationFragmentConstraintLayoutRequirePermission.visibility = View.VISIBLE
             mBinding.LocationFragmentConstraintLayoutLocationLayout.visibility = View.GONE
+
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.admin.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -10,17 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.admin.R
-import com.example.admin.backend.firebase.Firestore
 import com.example.admin.backend.firebase.NormalAuth
 import com.example.admin.databinding.ActivityMainBinding
-import com.example.admin.pojo.Address
-import com.example.admin.pojo.Client
-import com.example.admin.pojo.Delivery
-import com.example.admin.pojo.Meal
-import com.example.admin.pojo.Order
-import com.example.admin.pojo.OrderItem
 import com.example.admin.pojo.Restaurant
-import com.example.admin.utils.Const
 import com.example.admin.utils.TempStorage
 
 class MainActivity : AppCompatActivity(), RestaurantView {
@@ -51,15 +44,14 @@ class MainActivity : AppCompatActivity(), RestaurantView {
     }
 
     private fun getRestaurantInfo() {
+        Log.i("shehab","${TempStorage.instance().restaurant}")
         val resPresenter = RestaurantPresenter(this)
         resPresenter.getRestaurant(baseContext)
     }
 
     override fun onGetRestaurant(restaurant: Restaurant) {
         TempStorage.instance().restaurant = restaurant
-
-        //test(restaurant)
-
+        Log.i("shehab","${TempStorage.instance().restaurant}")
         updateUI()
     }
 
@@ -99,6 +91,14 @@ class MainActivity : AppCompatActivity(), RestaurantView {
             R.id.signOut -> {
                 val auth = NormalAuth(baseContext)
                 auth.signOut()
+                TempStorage.instance().restaurant = null
+                TempStorage.instance().order = null
+                TempStorage.instance().admin = null
+                TempStorage.instance().meal = null
+                TempStorage.instance().restaurantName = null
+                TempStorage.instance().restaurantAddress = null
+                TempStorage.instance().restaurantLogo = null
+
                 startActivity(SignInActivity.instanceWithClearStack(baseContext))
                 finish()
             }
@@ -113,26 +113,26 @@ class MainActivity : AppCompatActivity(), RestaurantView {
             return Intent(context, MainActivity::class.java)
         }
     }
-/*
-    private fun test(restaurant: Restaurant) {
-        val firestore = Firestore(baseContext)
-        val id = Firestore.documentId()
-        val order = Order(
-            id,
-            Client("Ali Mohamed", Address(1.2, 1.2, "Address"), "01067770465"),
-            Delivery("Hassan Ahmed", Address(1.2, 1.2, "Address")),
-            "12/02/2024",
-            mutableListOf(
-                OrderItem(Meal("Chicken", ""), 3, Meal.Type("Small", 50f)),
-                OrderItem(Meal("Beef", ""), 1, Meal.Type("Medium", 70f)),
-                OrderItem(Meal("Pizza", ""), 2, Meal.Type("Large", 100f)),
-                OrderItem(Meal("Chicken", ""), 3, Meal.Type("Small", 50f)),
-                OrderItem(Meal("Beef", ""), 1, Meal.Type("Small", 50f)),
-                OrderItem(Meal("Pizza", ""), 2, Meal.Type("Small", 50f))
+    /*
+        private fun test(restaurant: Restaurant) {
+            val firestore = Firestore(baseContext)
+            val id = Firestore.documentId()
+            val order = Order(
+                id,
+                Client("Ali Mohamed", Address(1.2, 1.2, "Address"), "01067770465"),
+                Delivery("Hassan Ahmed", Address(1.2, 1.2, "Address")),
+                "12/02/2024",
+                mutableListOf(
+                    OrderItem(Meal("Chicken", ""), 3, Meal.Type("Small", 50f)),
+                    OrderItem(Meal("Beef", ""), 1, Meal.Type("Medium", 70f)),
+                    OrderItem(Meal("Pizza", ""), 2, Meal.Type("Large", 100f)),
+                    OrderItem(Meal("Chicken", ""), 3, Meal.Type("Small", 50f)),
+                    OrderItem(Meal("Beef", ""), 1, Meal.Type("Small", 50f)),
+                    OrderItem(Meal("Pizza", ""), 2, Meal.Type("Small", 50f))
+                )
             )
-        )
-        firestore.upload(order, Const.ordersPath(restaurant.id!!), id, {}, {})
-    }
+            firestore.upload(order, Const.ordersPath(restaurant.id!!), id, {}, {})
+        }
 
- */
+     */
 }

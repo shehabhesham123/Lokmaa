@@ -49,7 +49,6 @@ class GoogleMap : SupportMapFragment() {
      * this fun is used to add mark to address on map
      */
     fun addMarker(markerParam: Marker) {
-        googleMap.clear()
         val marker = MarkerOptions()
             .position(markerParam.latLng)
             .title(markerParam.title)
