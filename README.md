@@ -51,8 +51,8 @@ Before using the Lokma app, ensure that you have the following:
 ### For Delivery Workers
 
 <p float="left">
-  <img src="screenshots/Screenshot2.png" alt="Customer Interface"  height="500px" style="width: 48%; margin-right: 2%;" />
-  <img src="screenshots/Screenshot8.png" alt="Customer Interface"  height="500px" style="width: 48%;" />
+  <img src="screenshots/Screenshot2.png" alt="Customer Interface"  style="width: 48%; height: 500px; margin-right: 2%;" />
+  <img src="screenshots/Screenshot8.png" alt="Customer Interface"  style="width: 48%; height: 500px;" />
 </p>
 
 1. Receive notifications when a delivery task is assigned to you.
