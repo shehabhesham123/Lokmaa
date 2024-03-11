@@ -111,6 +111,8 @@ class CartActivity : AppCompatActivity(), ViewHolder, QuantityChanging, Delivery
                 mBinding.CartFragmentRecyclerViewOrders.adapter?.notifyDataSetChanged()
                 mBinding.CartFragmentTotalPrice.text = resources.getString(R.string.price,"0.0")
                 mBinding.CartFragmentButtonPleaseOrder.isEnabled =true
+
+
             },{})                                                            
         },{})
     }

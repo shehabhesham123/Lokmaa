@@ -1,8 +1,8 @@
 # Lokma Android App
 
-Welcome to Lokma, your ultimate solution for quick and convenient food ordering from a variety of restaurants. Lokma connects customers, restaurants, and dedicated delivery workers seamlessly, ensuring a delightful experience for all users. With its user-friendly design and visually appealing interface, Lokma makes choosing a favorite restaurant and ordering the perfect meal a breeze.
+![Customer Interface](screenshots/screenshot4.png)
 
-![Customer Interface](screenshots/ss.png)
+Welcome to Lokma, your ultimate solution for quick and convenient food ordering from a variety of restaurants. Lokma connects customers, restaurants, and dedicated delivery workers seamlessly, ensuring a delightful experience for all users. With its user-friendly design and visually appealing interface, Lokma makes choosing a favorite restaurant and ordering the perfect meal a breeze.
 
 ## Key Features
 
@@ -31,6 +31,8 @@ Before using the Lokma app, ensure that you have the following:
 
 ### For Customers
 
+![Customer Interface](screenshots/screenshot5.png)
+
 1. Open the Lokma app and explore the list of restaurants.
 2. Select your preferred restaurant, explore the menu, and add items to your cart.
 3. Place your order and proceed to checkout.
@@ -38,11 +40,17 @@ Before using the Lokma app, ensure that you have the following:
 
 ### For Restaurants
 
+![Customer Interface](screenshots/screenshot1.png)
+
 1. Log in to the Lokma restaurant dashboard.
 2. Add and manage your menu items for customers to choose from.
 3. Efficiently receive and process customer orders.
 
 ### For Delivery Workers
+
+![Customer Interface](screenshots/screenshot2.png)
+
+![Customer Interface](screenshots/screenshot8.png)
 
 1. Receive notifications when a delivery task is assigned to you.
 2. Access information about the restaurant and customer involved in the delivery.
