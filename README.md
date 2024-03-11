@@ -51,7 +51,7 @@ Before using the Lokma app, ensure that you have the following:
 ### For Delivery Workers
 
 <p float="left">
-  <img src="screenshots/Screenshot2.png" alt="Customer Interface"  height="500px" width="200px" />
+  <img src="screenshots/Screenshot2.png" alt="Customer Interface"  height="500px" width="200px" margin-right: 70px; />
   <img src="screenshots/Screenshot8.png" alt="Customer Interface"  height="500px" width="200px" />
 </p>
 
