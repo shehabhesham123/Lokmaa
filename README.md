@@ -1,7 +1,7 @@
 # Lokma Android App
 
 
-<img src="screenshots/Screenshot4.png" alt="Customer Interface" height="400px">
+<img src="screenshots/Screenshot4.png" alt="Customer Interface" height="500px">
 
 
 Welcome to Lokma, your ultimate solution for quick and convenient food ordering from a variety of restaurants. Lokma connects customers, restaurants, and dedicated delivery workers seamlessly, ensuring a delightful experience for all users. With its user-friendly design and visually appealing interface, Lokma makes choosing a favorite restaurant and ordering the perfect meal a breeze.
@@ -33,7 +33,7 @@ Before using the Lokma app, ensure that you have the following:
 
 ### For Customers
 
-![Customer Interface](screenshots/Screenshot5.png)
+<img src="screenshots/Screenshot5.png" alt="Customer Interface" height="500px">
 
 1. Open the Lokma app and explore the list of restaurants.
 2. Select your preferred restaurant, explore the menu, and add items to your cart.
@@ -42,7 +42,7 @@ Before using the Lokma app, ensure that you have the following:
 
 ### For Restaurants
 
-![Customer Interface](screenshots/Screenshot1.png)
+<img src="screenshots/Screenshot1.png" alt="Customer Interface" height="500px">
 
 1. Log in to the Lokma restaurant dashboard.
 2. Add and manage your menu items for customers to choose from.
@@ -50,9 +50,10 @@ Before using the Lokma app, ensure that you have the following:
 
 ### For Delivery Workers
 
-![Customer Interface](screenshots/Screenshot2.png)
-
-![Customer Interface](screenshots/Screenshot8.png)
+<p float="left">
+  <img src="screenshots/Screenshot2.png" alt="Customer Interface" width="48%" />
+  <img src="screenshots/Screenshot8.png" alt="Customer Interface" width="48%" />
+</p>
 
 1. Receive notifications when a delivery task is assigned to you.
 2. Access information about the restaurant and customer involved in the delivery.
