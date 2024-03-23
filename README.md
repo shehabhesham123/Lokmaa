@@ -80,6 +80,5 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgements
 
 - Our dedicated team of developers and contributors.
-- [Third-party libraries or services, if applicable]
 
 Feel free to explore, use, and contribute to Lokma. We hope it makes your food ordering experience not only quick and easy but also delightful and personalized!
